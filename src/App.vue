@@ -1,32 +1,77 @@
 <template>
   <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
+    <NavbarComponent />
+<!--    <nav>-->
+<!--      <router-link to="/">Home</router-link> |-->
+<!--&lt;!&ndash;      <router-link to="/about">About</router-link>&ndash;&gt;-->
+<!--    </nav>-->
     <router-view/>
   </div>
 </template>
 
+<script>
+import NavbarComponent from "@/components/NavbarComponent";
+export default {
+  components: {NavbarComponent}
+}
+</script>
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Playfair+Display:wght@400;500;700&display=swap');
+
+:root {
+  --white: white;
+  --black: black;
+  --grey: #eaeaea
 }
 
-nav {
-  padding: 30px;
+
+body {
+  margin: 0;
 }
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
+h1, h2, h3, h4 p {
+  margin-block-start: 0;
+  margin-block-end: 0;
 }
 
-nav a.router-link-exact-active {
-  color: #42b983;
+p {
+  margin: 5px 0 0;
+}
+
+h1 {
+  font-size: 4rem;
+}
+
+h2 {
+  font-size: 3rem;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
+button, input[type=submit], p {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 900px) {
+  h1 {
+    font-size: 3rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  h3 {
+    font-size: 1rem;
+  }
+
+
+  section {
+    max-width: 900px;
+  }
 }
 </style>
