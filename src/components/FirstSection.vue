@@ -1,8 +1,8 @@
 <template>
   <section class="first-section">
     <header class="main-header">
-      <h2>Najlepsze Kuchnie we Wrocławiu</h2>
-      <p>Twoja wycena zostanie przetworzona w ciągu 48 godzin od momentu złożenia zapytania.</p>
+      <h2>{{$store.state.data.firstSection.mainHeader.h2}}</h2>
+      <p>{{ $store.state.data.firstSection.mainHeader.p }}</p>
       <button class="contact-button">Kontakt</button>
     </header>
     <div class="contact-icons">
