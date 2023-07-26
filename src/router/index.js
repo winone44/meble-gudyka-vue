@@ -1,14 +1,49 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import LoginView from "@/views/LoginView";
+import AdminView from "@/views/AdminView";
+import store from "@/store";
 
 Vue.use(VueRouter)
+
+const authGuard = (to, from, next) => {
+  if (store.state.isAuth) {
+    console.log("authGuard " + store.state.isAuth)
+    next();
+  }else {
+    console.log("authGuard " + store.state.isAuth)
+    next({name: 'login-to-admin-panel'})
+  }
+}
+
+const notAuthGuard = (to, from, next) => {
+  if (!store.state.isAuth) {
+    console.log("notAuthGuard " + store.state.isAuth)
+    next();
+  }else {
+    console.log("notAuthGuard " + store.state.isAuth)
+    next({name: 'admin-panel'})
+  }
+}
 
 const routes = [
   {
     path: '/',
     name: 'home',
     component: HomeView
+  },
+  {
+    path: '/login',
+    name: 'login-to-admin-panel',
+    component: LoginView,
+    beforeEnter: notAuthGuard,
+  },
+  {
+    path: '/admin',
+    name: 'admin-panel',
+    component: AdminView,
+    beforeEnter: authGuard,
   }
 ]
 

@@ -32,7 +32,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 .first-section {
   background-image: url("/public/assets/img/fotka.png");
   background-repeat: no-repeat;
