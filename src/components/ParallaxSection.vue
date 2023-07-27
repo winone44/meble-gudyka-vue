@@ -1,21 +1,26 @@
 <template>
-  <section class="parallax">
+  <section class="parallax" :style="backgroundStyle">
     <div class="parallax-container">
-      <img src="assets/img/logo.png" alt="">
-      <button class="contact-button">Kontakt</button>
+      <img :src="$store.state.data.parallax.logoUrl" alt="">
+      <button class="contact-button">{{ $store.state.data.parallax.button.buttonName }}</button>
     </div>
   </section>
 </template>
 
 <script>
 export default {
-  name: "ParallaxSection"
+  name: "ParallaxSection",
+  computed: {
+    backgroundStyle() {
+      const url = this.$store.state.data.parallax.backgroundImage;
+      return `background-image: url(${url});`
+    }
+  }
 }
 </script>
 
 <style scoped>
 .parallax {
-  background-image: url("/public/assets/img/kuchniegudykawroclaw.png");
   min-height: 400px;
   background-attachment: fixed;
   background-position: center;

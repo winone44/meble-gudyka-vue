@@ -1,5 +1,5 @@
 <template>
-  <section class="first-section">
+  <section class="first-section" :style="backgroundStyle">
     <header class="main-header">
       <h2>{{$store.state.data.firstSection.mainHeader.h2}}</h2>
       <p>{{ $store.state.data.firstSection.mainHeader.p }}</p>
@@ -29,12 +29,17 @@
 <script>
 export default {
   name: "FirstSection",
+  computed: {
+    backgroundStyle() {
+      const url = this.$store.state.data.firstSection.backgroundImage;
+      return `background-image: url(${url});`
+    }
+  }
 }
 </script>
 
 <style>
 .first-section {
-  background-image: url("/public/assets/img/fotka.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;

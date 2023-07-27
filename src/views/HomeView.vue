@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <NavbarComponent />
+    <BackButtonComponent v-if="$store.state.isAuth" />
     <FirstSection/>
     <OtherProjectsSection />
     <ParallaxSection />
@@ -26,10 +27,12 @@ import CustomerReviewsSection from "@/components/CustomerReviewsSection";
 import OurKnowledgeSection from "@/components/OurKnowledgeSection";
 import BestFurnitureParallaxSection from "@/components/BestFurnitureParallaxSection";
 import FooterSection from "@/components/FooterSection";
+import BackButtonComponent from "@/components/BackButtonComponent";
 
 export default {
   name: 'HomeView',
   components: {
+    BackButtonComponent,
     FooterSection,
     BestFurnitureParallaxSection,
     OurKnowledgeSection,
@@ -83,6 +86,7 @@ button, input[type=submit], p {
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
 }
+
 
 @media screen and (max-width: 900px) {
   h1 {

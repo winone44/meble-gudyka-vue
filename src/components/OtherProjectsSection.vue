@@ -1,41 +1,16 @@
 <template>
   <section class="other-projects">
     <header>
-      <h2>A co poza kuchniami?</h2>
+      <h2>{{ $store.state.data.otherProjects.header.h2 }}</h2>
     </header>
     <div class="gallery">
-      <div>
+      <div v-for="(item, index) in $store.state.data.otherProjects.gallery" :key="index">
         <div class="gallery-image">
-          <img src="assets/img/foto1.png" alt="Obraz przedstawiający pięknie wykończoną kuchnię z drewna">
+          <img :src="item.galleryImage.imageUrl"
+               :alt="item.galleryImage.imageAlt">
         </div>
         <div class="gallery-title">
-          <p>Kuchnie</p>
-        </div>
-      </div>
-      <div>
-        <div class="gallery-image">
-          <img src="assets/img/foto2.png"
-               alt="Zdjęcie eleganckich drewnianych szaf wykonanych przez naszą firmę.">
-        </div>
-        <div class="gallery-title">
-          <p>Szafy</p>
-        </div>
-      </div>
-      <div>
-        <div class="gallery-image">
-          <img src="assets/img/foto3.png"
-               alt="Ilustracja nowoczesnych garderób z drewna dostępnych w naszej ofercie.">
-        </div>
-        <div class="gallery-title">
-          <p>Garderoby</p>
-        </div>
-      </div>
-      <div>
-        <div class="gallery-image">
-          <img src="assets/img/foto4.png" alt="Obraz pokazujący nasze wykonane na zamówienie drewniane biura.">
-        </div>
-        <div class="gallery-title">
-          <p>Biura</p>
+          <p>{{item.galleryTitle.p}}</p>
         </div>
       </div>
     </div>
