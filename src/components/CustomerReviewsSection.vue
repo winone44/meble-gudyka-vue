@@ -1,19 +1,19 @@
 <template>
-  <section class="customer-reviews">
+  <section class="customer-reviews" :style="backgroundStyle">
     <div class="customer-reviews-content-bg">
       <div class="customer-reviews-content">
         <h1>{{ $store.state.data.customerReviews.h1 }}</h1>
         <hr style="width: 300px; border: 1px solid black;">
         <p>{{ $store.state.data.customerReviews.p }}</p>
         <div class="social-reviews-container">
-          <div class="social-review">
-            <button class="users-reviews-button">NASZE OPINIE W GOOGLE</button>
+          <div class="social-review" v-if="$store.state.data.customerReviews.buttons.googleButton.show">
+            <button class="users-reviews-button">{{ $store.state.data.customerReviews.buttons.googleButton.buttonText }}</button>
             <BIconGoogle id="google-icon" style="width: 100px; height: 100px"/>
             <p>40 opinii</p>
             <p>5/5</p>
           </div>
-          <div class="social-review">
-            <button class="users-reviews-button">NASZE OPINIE W FACEBOOKU</button>
+          <div class="social-review" v-if="$store.state.data.customerReviews.buttons.facebookButton.show">
+            <button class="users-reviews-button">{{ $store.state.data.customerReviews.buttons.facebookButton.buttonText}}</button>
             <BIconFacebook id="facebook-icon" style="width: 100px; height: 100px"/>
             <p>40 opinii</p>
             <p>5/5</p>
@@ -22,7 +22,7 @@
       </div>
     </div>
     <div class="logo-review">
-      <img src="assets/img/logo.png" alt="">
+      <img :src="$store.state.data.customerReviews.logoUrl" alt="">
     </div>
   </section>
 </template>
@@ -35,7 +35,13 @@ export default {
     BIconGoogle,
     BIconFacebook
   },
-  name: "CustomerReviewsSection"
+  name: "CustomerReviewsSection",
+  computed: {
+    backgroundStyle() {
+      const url = this.$store.state.data.customerReviews.backgroundImage;
+      return `background-image: url(${url});`
+    }
+  }
 }
 </script>
 

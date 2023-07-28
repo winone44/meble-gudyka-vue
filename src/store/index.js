@@ -123,7 +123,8 @@ const store = new Vuex.Store({
             buttonText: 'NASZE OPINIE W FACEBOOKU',
             show: true
           }
-        }
+        },
+        logoUrl: 'assets/img/logo.png',
       }
     }
   },

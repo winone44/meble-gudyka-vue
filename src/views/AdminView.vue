@@ -223,11 +223,73 @@
 
       <b-card no-body class="mb-1">
         <b-card-header header-tag="header" class="p-1" role="tab">
-          <b-button block v-b-toggle.accordion-5 variant="info">parallax</b-button>
+          <b-button block v-b-toggle.accordion-5 variant="info">customer-reviews</b-button>
         </b-card-header>
         <b-collapse id="accordion-5" accordion="my-accordion" role="tabpanel">
           <b-card-body>
-            <b-card-text>{{ text }}</b-card-text>
+            <b-form>
+              <b-form-group
+                  label="Tło"
+              >
+                <b-form-input
+                    v-model="$store.state.data.customerReviews.backgroundImage"
+                ></b-form-input>
+              </b-form-group>
+              <b-form-group
+                label="Nagłówek"
+              >
+                <b-form-input
+                  v-model="$store.state.data.customerReviews.h1"
+                ></b-form-input>
+              </b-form-group>
+              <b-form-group
+                  label="Tekst"
+              >
+                <b-form-textarea
+                    v-model="$store.state.data.customerReviews.p"
+                ></b-form-textarea>
+              </b-form-group>
+              <b-row>
+                <b-col class="col-8">
+                  <b-form-group
+                      label="Przycisk google tekst:"
+                  >
+                    <b-form-input
+                        v-model="$store.state.data.customerReviews.buttons.googleButton.buttonText"
+                    ></b-form-input>
+                  </b-form-group>
+                </b-col>
+                <b-col class="d-flex align-items-center">
+                  <b-form-checkbox
+                      id="checkbox-3"
+                      name="checkbox-3"
+                      v-model="$store.state.data.customerReviews.buttons.googleButton.show"
+                  >
+                    Pokaż ikonę google
+                  </b-form-checkbox>
+                </b-col>
+              </b-row>
+              <b-row>
+                <b-col class="col-8">
+                  <b-form-group
+                      label="Przycisk facebook tekst:"
+                  >
+                    <b-form-input
+                        v-model="$store.state.data.customerReviews.buttons.facebookButton.buttonText"
+                    ></b-form-input>
+                  </b-form-group>
+                </b-col>
+                <b-col class="d-flex align-items-center">
+                  <b-form-checkbox
+                      id="checkbox-3"
+                      name="checkbox-3"
+                      v-model="$store.state.data.customerReviews.buttons.facebookButton.show"
+                  >
+                    Pokaż ikonę facebook
+                  </b-form-checkbox>
+                </b-col>
+              </b-row>
+            </b-form>
           </b-card-body>
         </b-collapse>
       </b-card>
