@@ -13,7 +13,7 @@ const store = new Vuex.Store({
           h2: 'Najlepsze Kuchnie we Wrocławiu',
           p: 'Twoja wycena zostanie przetworzona w ciągu 48 godzin od momentu złożenia zapytania.',
           button: {
-            buttonName: 'Kontakt'
+            buttonText: 'Kontakt'
           }
         },
         contactIcons: {
@@ -78,7 +78,7 @@ const store = new Vuex.Store({
         backgroundImage: '/assets/img/kuchniegudykawroclaw.png',
         logoUrl: 'assets/img/logo.png',
         button: {
-          buttonName: 'Kontakt'
+          buttonText: 'Kontakt'
         }
       },
       howWeWork: {
@@ -100,7 +100,29 @@ const store = new Vuex.Store({
           }
         ],
         button: {
-          buttonName: 'ZOBACZ NASZE REALIZACJE'
+          buttonText: 'ZOBACZ NASZE REALIZACJE'
+        }
+      },
+      aboutUs: {
+        imageUrl: 'assets/img/DSC04159.png',
+        imageAlt: '',
+        h3: 'Jesteśmy super',
+        p: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam e',
+        buttonText: 'O nas'
+      },
+      customerReviews: {
+        backgroundImage: '/assets/img/3.png',
+        h1: 'Mamy bardzo dobre opinie',
+        p: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor',
+        buttons: {
+          googleButton: {
+            buttonText: 'NASZE OPINIE W GOOGLE',
+            show: true
+          },
+          facebookButton: {
+            buttonText: 'NASZE OPINIE W FACEBOOKU',
+            show: true
+          }
         }
       }
     }

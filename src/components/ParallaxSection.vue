@@ -2,7 +2,7 @@
   <section class="parallax" :style="backgroundStyle">
     <div class="parallax-container">
       <img :src="$store.state.data.parallax.logoUrl" alt="">
-      <button class="contact-button">{{ $store.state.data.parallax.button.buttonName }}</button>
+      <button class="contact-button">{{ $store.state.data.parallax.button.buttonText }}</button>
     </div>
   </section>
 </template>

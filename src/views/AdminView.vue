@@ -168,7 +168,7 @@
                   label="Nazwa przycisku"
               >
                 <b-form-input
-                    v-model="$store.state.data.parallax.button.buttonName"
+                    v-model="$store.state.data.parallax.button.buttonText"
                 >
                 </b-form-input>
               </b-form-group>
@@ -207,7 +207,15 @@
                   ></b-form-textarea>
                 </b-form-group>
               </div>
-              <b-button @click="addNewFolderItem">+</b-button>
+              <b-button class="mb-5" @click="addNewFolderItem">+</b-button>
+              <b-form-group
+                  label="Nazwa przyciksu"
+                  class="mt-5"
+              >
+                <b-form-input
+                    v-model="$store.state.data.howWeWork.button.buttonText"
+                ></b-form-input>
+              </b-form-group>
             </b-form>
           </b-card-body>
         </b-collapse>

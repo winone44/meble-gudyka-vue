@@ -14,7 +14,7 @@
       </div>
     </div>
     <div>
-      <button id="folders-button">{{ $store.state.data.howWeWork.button.buttonName }}</button>
+      <button id="folders-button">{{ $store.state.data.howWeWork.button.buttonText }}</button>
     </div>
   </section>
 </template>

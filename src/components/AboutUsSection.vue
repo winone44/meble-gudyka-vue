@@ -2,13 +2,13 @@
   <section class="about-us">
     <div>
       <div id="about-us-image-container">
-        <img src="assets/img/DSC04159.png" alt="">
+        <img :src="$store.state.data.aboutUs.imageUrl" :alt="$store.state.data.aboutUs.imageAlt">
       </div>
     </div>
     <div class="about-us-text">
-      <h3>Jesteśmy super</h3>
-      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam e</p>
-      <button id="about-us-button">O nas</button>
+      <h3>{{ $store.state.data.aboutUs.h3 }}</h3>
+      <p>{{ $store.state.data.aboutUs.p }}</p>
+      <button id="about-us-button">{{ $store.state.data.aboutUs.buttonText }}</button>
     </div>
   </section>
 </template>
