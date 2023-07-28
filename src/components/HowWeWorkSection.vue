@@ -1,34 +1,20 @@
 <template>
   <section class="how-we-work">
     <header>
-      <h1>Jak pracujemy?</h1>
+      <h1>{{ $store.state.data.howWeWork.header.h1 }}</h1>
       <hr style="width: 50vw; border: 1px solid black;">
     </header>
     <div class="folders">
-      <div class="folder">
-        <div class="folder-number">1</div>
+      <div class="folder" v-for="(item, index) in $store.state.data.howWeWork.folders" :key="index">
+        <div class="folder-number">{{ index + 1 }}</div>
         <header>
-          <h2>Darmowa wycena w 48H</h2>
+          <h2>{{ item.h2 }}</h2>
         </header>
-        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet</p>
-      </div>
-      <div class="folder">
-        <div class="folder-number">2</div>
-        <header>
-          <h2>Produkcja Twojej Kuchni</h2>
-        </header>
-        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet</p>
-      </div>
-      <div class="folder">
-        <div class="folder-number">3</div>
-        <header>
-          <h2>Montaż Twojej kuchni</h2>
-        </header>
-        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet</p>
+        <p>{{ item.p }}</p>
       </div>
     </div>
     <div>
-      <button id="folders-button">ZOBACZ NASZE REALIZACJE</button>
+      <button id="folders-button">{{ $store.state.data.howWeWork.button.buttonName }}</button>
     </div>
   </section>
 </template>

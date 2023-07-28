@@ -11,7 +11,24 @@ const store = new Vuex.Store({
         backgroundImage: '/assets/img/fotka.png',
         mainHeader: {
           h2: 'Najlepsze Kuchnie we Wrocławiu',
-          p: 'Twoja wycena zostanie przetworzona w ciągu 48 godzin od momentu złożenia zapytania.'
+          p: 'Twoja wycena zostanie przetworzona w ciągu 48 godzin od momentu złożenia zapytania.',
+          button: {
+            buttonName: 'Kontakt'
+          }
+        },
+        contactIcons: {
+          telephone: {
+            telNumber: '123456789',
+            show: true,
+          },
+          facebook: {
+            fbUrl: 'https://fb.com',
+            show: true,
+          },
+          envelope: {
+            mail: 'example@mail.com',
+            show: true,
+          }
         }
       },
       otherProjects: {
@@ -62,6 +79,28 @@ const store = new Vuex.Store({
         logoUrl: 'assets/img/logo.png',
         button: {
           buttonName: 'Kontakt'
+        }
+      },
+      howWeWork: {
+        header: {
+          h1: 'Jak pracujemy?',
+        },
+        folders: [
+          {
+            h2: 'Darmowa wycena w 48H',
+            p: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet'
+          },
+          {
+            h2: 'Produkcja Twojej Kuchni',
+            p: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet'
+          },
+          {
+            h2: 'Montaż Twojej kuchni',
+            p: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet'
+          }
+        ],
+        button: {
+          buttonName: 'ZOBACZ NASZE REALIZACJE'
         }
       }
     }
