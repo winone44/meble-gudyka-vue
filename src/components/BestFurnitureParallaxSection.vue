@@ -1,15 +1,24 @@
 <template>
-  <section class="best-furniture-parallax">
+  <section class="best-furniture-parallax" :style="backgroundStyle">
     <header>
-      <h1 class="best-furniture-parallax-transparent-text">Najlepsze meble</h1>
-      <button id="best-furniture-parallax-button">NASZE REALIZACJE</button>
+      <h1 class="best-furniture-parallax-transparent-text">{{ $store.state.data.bestFurnitureParallax.h1 }}</h1>
+      <button id="best-furniture-parallax-button">{{
+          $store.state.data.bestFurnitureParallax.button.buttonText
+        }}
+      </button>
     </header>
   </section>
 </template>
 
 <script>
 export default {
-  name: "BestFurnitureParallaxSection"
+  name: "BestFurnitureParallaxSection",
+  computed: {
+    backgroundStyle() {
+      const url = this.$store.state.data.bestFurnitureParallax.backgroundImage;
+      return `background-image: url(${url});`
+    }
+  }
 }
 </script>
 
@@ -46,7 +55,7 @@ export default {
 }
 
 #best-furniture-parallax-button {
-  background-color: rgba(0,0,0,0);
+  background-color: rgba(0, 0, 0, 0);
   text-transform: uppercase;
   border: 4px solid var(--white);
   color: var(--white);
@@ -58,7 +67,7 @@ export default {
 }
 
 #best-furniture-parallax-button:hover {
-  background: rgba(255,255,255,0.5);
+  background: rgba(255, 255, 255, 0.5);
   color: #111;
 }
 

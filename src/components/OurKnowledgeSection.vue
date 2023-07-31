@@ -1,14 +1,10 @@
 <template>
   <section class="our-knowledge">
     <header>
-      <h1>Nasza wiedza</h1>
+      <h1>{{ $store.state.data.ourKnowledge.header.h1 }}</h1>
       <hr style="width: 100px; border: 5px solid black;">
-      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-        dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
-        clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
-        consetetur sadipscing
-      </p>
-      <button id="our-knowledge-button">Kontakt</button>
+      <p>{{ $store.state.data.ourKnowledge.header.p }}</p>
+      <button id="our-knowledge-button"> {{$store.state.data.ourKnowledge.header.button.buttonText}} </button>
     </header>
     <div class="our-knowledge-content">
       <div class="slider-nav">
@@ -18,11 +14,7 @@
             :class="{disabled: position === 0}"
             @click="movePrev"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-               class="bi bi-arrow-left" viewBox="0 0 16 16">
-            <path fill-rule="evenodd"
-                  d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
-          </svg>
+          <BIconArrowLeft />
         </button>
         <p>Przewiń</p>
         <button
@@ -31,11 +23,7 @@
             :class="{disabled: position === -(wrapperWidth - visibleWidth)}"
             @click="moveNext"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-               class="bi bi-arrow-right" viewBox="0 0 16 16">
-            <path fill-rule="evenodd"
-                  d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
-          </svg>
+          <BIconArrowRight />
         </button>
       </div>
       <div class="slider-container" ref="sliderContainer">
@@ -44,14 +32,14 @@
              @touchmove="handleTouchMove"
              @touchend="handleTouchEnd"
         >
-          <div class="slider-item" v-for="(item, index) in items" :key="index" ref="sliderItem">
+          <div class="slider-item" v-for="(item, index) in $store.state.data.ourKnowledge.slider.items" :key="index" ref="sliderItem">
             <div class="slide-img">
               <img :src="item.imageUrl" :alt="item.imageAlt">
             </div>
             <div class="slider-item-text">
               <div>
                 <h4>{{item.title}}</h4>
-                <p><span class="item-date">{{items.date}}</span></p>
+                <p><span class="item-date">Data publikacji: {{item.date}}</span></p>
                 <p>{{item.description}}</p>
               </div>
             </div>
@@ -68,47 +56,15 @@
 </template>
 
 <script>
+import {BIconArrowRight, BIconArrowLeft} from 'bootstrap-vue'
 export default {
   name: "OurKnowledgeSection",
+  components: {
+    BIconArrowRight,
+    BIconArrowLeft,
+  },
   data() {
     return {
-      items: [
-        {
-          imageUrl: 'assets/img/fotoSlider.png',
-          imageAlt: 'Oświetlona ulica most samochód kościół',
-          title: 'Tytuł wpisu',
-          date: 'Data publikacji: 15.04.2021',
-          description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet'
-        },
-        {
-          imageUrl: 'assets/img/fotoSlider.png',
-          imageAlt: 'Oświetlona ulica most samochód kościół',
-          title: 'Tytuł wpisu',
-          date: 'Data publikacji: 15.04.2021',
-          description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet'
-        },
-        {
-          imageUrl: 'assets/img/fotoSlider.png',
-          imageAlt: 'Oświetlona ulica most samochód kościół',
-          title: 'Tytuł wpisu',
-          date: 'Data publikacji: 15.04.2021',
-          description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet'
-        },
-        {
-          imageUrl: 'assets/img/fotoSlider.png',
-          imageAlt: 'Oświetlona ulica most samochód kościół',
-          title: 'Tytuł wpisu',
-          date: 'Data publikacji: 15.04.2021',
-          description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet'
-        },
-        {
-          imageUrl: 'assets/img/fotoSlider.png',
-          imageAlt: 'Oświetlona ulica most samochód kościół',
-          title: 'Tytuł wpisu',
-          date: 'Data publikacji: 15.04.2021',
-          description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet'
-        },
-      ], // Tutaj powinna być tablica elementów do wyświetlenia
       position: 0,
       touchStartX: 0,
       touchEndX: 0,
@@ -126,7 +82,7 @@ export default {
     initSlider() {
       this.containerWidth = this.$refs.sliderContainer.clientWidth;
       this.itemWidth = this.$refs.sliderItem[0].offsetWidth;
-      this.wrapperWidth = this.itemWidth * this.items.length;
+      this.wrapperWidth = this.itemWidth * this.$store.state.data.ourKnowledge.slider.items.length;
       this.visibleItems = Math.floor(this.containerWidth / this.itemWidth);
       this.visibleWidth = this.visibleItems * this.itemWidth;
     },
@@ -213,6 +169,10 @@ export default {
   color: var(--grey);
 }
 
+.slider-nav > button > svg {
+  height: 16px;
+  width: 16px;
+}
 .slider-nav > p {
   margin: 0;
 }

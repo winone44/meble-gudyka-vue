@@ -2,28 +2,38 @@
   <footer>
     <header>
       <div>
-        <h1>Napisz do nas!</h1>
+        <h1>{{ $store.state.data.footer.header.h1 }}</h1>
       </div>
       <hr style="width: 200px; border: 5px solid black;">
-      <p>
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-      </p>
+      <p>{{ $store.state.data.footer.header.p }}</p>
       <div class="footer-contact">
-        <a href="#">
-          <BIconFacebook />
-          Facebook
+        <a
+            v-if="$store.state.data.footer.header.footerContact.facebook.show"
+            :href="$store.state.data.footer.header.footerContact.facebook.url"
+        >
+          <BIconFacebook/>
+          {{ $store.state.data.footer.header.footerContact.facebook.aText }}
         </a>
-        <a href="#">
-          <BIconInstagram />
-          Instagram
+        <a
+            v-if="$store.state.data.footer.header.footerContact.instagram.show"
+            :href="$store.state.data.footer.header.footerContact.instagram.url"
+        >
+          <BIconInstagram/>
+          {{ $store.state.data.footer.header.footerContact.instagram.aText }}
         </a>
-        <a href="tel:+48123456789">
-          <BIconTelephoneFill />
-          +48 123 456 789
+        <a
+            v-if="$store.state.data.footer.header.footerContact.telephone.show"
+            :href="'tel:'+ $store.state.data.footer.header.footerContact.telephone.url"
+        >
+          <BIconTelephoneFill/>
+          {{ $store.state.data.footer.header.footerContact.telephone.aText }}
         </a>
-        <a href="mailto:kontakt@stolzdrewna.pl">
-          <BIconEnvelopeFill />
-          kontakt@stolzdrewna.pl
+        <a
+            v-if="$store.state.data.footer.header.footerContact.mail.show"
+            :href="'mailto:' + $store.state.data.footer.header.footerContact.mail.url"
+        >
+          <BIconEnvelopeFill/>
+          {{ $store.state.data.footer.header.footerContact.mail.aText }}
         </a>
       </div>
     </header>
@@ -86,7 +96,7 @@ footer > header > hr {
 }
 
 footer > header > p {
-  clear:both;
+  clear: both;
   font-family: Playfair Display, serif;
   font-weight: 400;
   font-size: 2rem;
@@ -106,7 +116,7 @@ footer > header > p {
   transition: 0.2s;
 }
 
-.footer-contact a:link, .footer-contact a:visited, .footer-contact a:active   {
+.footer-contact a:link, .footer-contact a:visited, .footer-contact a:active {
   color: var(--black);
 }
 
@@ -139,7 +149,7 @@ input, textarea {
   border: none;
   outline: none;
   height: 100%;
-  background-color: rgba(0,0,0,0);
+  background-color: rgba(0, 0, 0, 0);
 }
 
 textarea {
@@ -166,7 +176,7 @@ input::placeholder, textarea::placeholder {
 
 label:focus-within > span,
 input:not(:placeholder-shown) + span,
-textarea:not(:placeholder-shown) + span{
+textarea:not(:placeholder-shown) + span {
   transform: translateY(5px);
 }
 

@@ -112,7 +112,7 @@
                 ></b-form-input>
               </b-form-group>
               <div class="my-5" v-for="(item, index) in $store.state.data.otherProjects.gallery"
-                   :key="item.galleryTitle">
+                   :key="item.galleryTitle.p">
                 <b-form-group
                     :label="'Url zdjęcia nr ' + (index + 1)"
                 >
@@ -149,10 +149,10 @@
           <b-card-body>
             <b-form>
               <b-form-group
-                label="Tło"
+                  label="Tło"
               >
                 <b-form-input
-                  v-model="$store.state.data.parallax.backgroundImage"
+                    v-model="$store.state.data.parallax.backgroundImage"
                 >
                 </b-form-input>
               </b-form-group>
@@ -185,10 +185,10 @@
           <b-card-body>
             <b-form>
               <b-form-group
-                label="Nagłówek"
+                  label="Nagłówek"
               >
                 <b-form-input
-                  v-model="$store.state.data.howWeWork.header.h1"
+                    v-model="$store.state.data.howWeWork.header.h1"
                 ></b-form-input>
               </b-form-group>
               <div class="my-5" v-for="(item, index) in $store.state.data.howWeWork.folders" :key="item.h2">
@@ -236,10 +236,10 @@
                 ></b-form-input>
               </b-form-group>
               <b-form-group
-                label="Nagłówek"
+                  label="Nagłówek"
               >
                 <b-form-input
-                  v-model="$store.state.data.customerReviews.h1"
+                    v-model="$store.state.data.customerReviews.h1"
                 ></b-form-input>
               </b-form-group>
               <b-form-group
@@ -296,33 +296,139 @@
 
       <b-card no-body class="mb-1">
         <b-card-header header-tag="header" class="p-1" role="tab">
-          <b-button block v-b-toggle.accordion-6 variant="info">parallax</b-button>
+          <b-button block v-b-toggle.accordion-6 variant="info">our-knowledge</b-button>
         </b-card-header>
         <b-collapse id="accordion-6" accordion="my-accordion" role="tabpanel">
           <b-card-body>
-            <b-card-text>{{ text }}</b-card-text>
+            <b-form>
+              <b-form-group
+                  label="Nagłówek"
+              >
+                <b-form-input
+                    v-model="$store.state.data.ourKnowledge.header.h1"
+                >
+                </b-form-input>
+              </b-form-group>
+              <b-form-group
+                  label="Tekst"
+              >
+                <b-form-textarea
+                    v-model="$store.state.data.ourKnowledge.header.p"
+                >
+                </b-form-textarea>
+              </b-form-group>
+              <b-form-group
+                  label="Przycisk"
+              >
+                <b-form-input
+                    v-model="$store.state.data.ourKnowledge.header.button.buttonText"
+                >
+                </b-form-input>
+              </b-form-group>
+              <div class="my-5" v-for="(item, index) in $store.state.data.ourKnowledge.slider.items"
+                   :key="index">
+                <b-form-group
+                    :label="'Url zdjęcia. Slide nr ' + (index + 1)"
+                >
+                  <b-form-input
+                      v-model="$store.state.data.ourKnowledge.slider.items[index].imageUrl"
+                  ></b-form-input>
+                </b-form-group>
+                <b-form-group
+                    label="Alt zdjęcia"
+                >
+                  <b-form-input
+                      v-model="$store.state.data.ourKnowledge.slider.items[index].imageAlt"
+                  ></b-form-input>
+                </b-form-group>
+                <b-form-group
+                    label="Tytuł"
+                >
+                  <b-form-input
+                      v-model="$store.state.data.ourKnowledge.slider.items[index].title"
+                  ></b-form-input>
+                </b-form-group>
+                <b-form-group
+                    label="Data"
+                >
+                  <b-form-input
+                      v-model="$store.state.data.ourKnowledge.slider.items[index].date"
+                  ></b-form-input>
+                </b-form-group>
+                <b-form-group
+                    label="Opis"
+                >
+                  <b-form-textarea
+                      v-model="$store.state.data.ourKnowledge.slider.items[index].description"
+                  ></b-form-textarea>
+                </b-form-group>
+              </div>
+              <b-button @click="addNewSlideItem">+</b-button>
+            </b-form>
           </b-card-body>
         </b-collapse>
       </b-card>
 
       <b-card no-body class="mb-1">
         <b-card-header header-tag="header" class="p-1" role="tab">
-          <b-button block v-b-toggle.accordion-7 variant="info">parallax</b-button>
+          <b-button block v-b-toggle.accordion-7 variant="info">best-furniture-parallax</b-button>
         </b-card-header>
         <b-collapse id="accordion-7" accordion="my-accordion" role="tabpanel">
           <b-card-body>
-            <b-card-text>{{ text }}</b-card-text>
+            <b-form>
+              <b-form-group
+                label="Tło"
+              >
+                <b-input
+                  v-model="$store.state.data.bestFurnitureParallax.backgroundImage"
+                >
+                </b-input>
+              </b-form-group>
+              <b-form-group
+                  label="Nagłówek"
+              >
+                <b-input
+                    v-model="$store.state.data.bestFurnitureParallax.h1"
+                >
+                </b-input>
+              </b-form-group>
+              <b-form-group
+                  label="Przycisk"
+              >
+                <b-input
+                    v-model="$store.state.data.bestFurnitureParallax.button.buttonText"
+                >
+                </b-input>
+              </b-form-group>
+            </b-form>
           </b-card-body>
         </b-collapse>
       </b-card>
 
       <b-card no-body class="mb-1">
         <b-card-header header-tag="header" class="p-1" role="tab">
-          <b-button block v-b-toggle.accordion-8 variant="info">parallax</b-button>
+          <b-button block v-b-toggle.accordion-8 variant="info">footer</b-button>
         </b-card-header>
         <b-collapse id="accordion-8" accordion="my-accordion" role="tabpanel">
           <b-card-body>
-            <b-card-text>{{ text }}</b-card-text>
+            <b-form>
+              <b-form-group
+                label="Nagłówek"
+              >
+                <b-form-input
+                  v-model="$store.state.data.footer.header.h1"
+                >
+                </b-form-input>
+              </b-form-group>
+              <b-form-group
+                  label="Tekst"
+              >
+                <b-form-textarea
+                    v-model="$store.state.data.footer.header.p"
+                >
+                </b-form-textarea>
+              </b-form-group>
+            </b-form>
           </b-card-body>
         </b-collapse>
       </b-card>
@@ -368,6 +474,16 @@ export default {
         p: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet'
       }
       this.$store.state.data.howWeWork.folders.push(example)
+    },
+    addNewSlideItem() {
+      const example = {
+            imageUrl: 'assets/img/fotoSlider.png',
+            imageAlt: 'Oświetlona ulica most samochód kościół',
+            title: 'Tytuł wpisu',
+            date: '15.04.2021',
+            description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet'
+          };
+          this.$store.state.data.ourKnowledge.slider.items.push(example)
     }
   }
 }

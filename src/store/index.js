@@ -125,6 +125,89 @@ const store = new Vuex.Store({
           }
         },
         logoUrl: 'assets/img/logo.png',
+      },
+      ourKnowledge: {
+        header: {
+          h1: 'Nasza wiedza',
+          p: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing',
+          button: {
+            buttonText: 'Kontakt'
+          }
+        },
+        slider: {
+          items: [
+            {
+              imageUrl: 'assets/img/fotoSlider.png',
+              imageAlt: 'Oświetlona ulica most samochód kościół',
+              title: 'Tytuł wpisu',
+              date: '15.04.2021',
+              description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet'
+            },
+            {
+              imageUrl: 'assets/img/fotoSlider.png',
+              imageAlt: 'Oświetlona ulica most samochód kościół',
+              title: 'Tytuł wpisu',
+              date: '15.04.2021',
+              description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet'
+            },
+            {
+              imageUrl: 'assets/img/fotoSlider.png',
+              imageAlt: 'Oświetlona ulica most samochód kościół',
+              title: 'Tytuł wpisu',
+              date: '15.04.2021',
+              description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet'
+            },
+            {
+              imageUrl: 'assets/img/fotoSlider.png',
+              imageAlt: 'Oświetlona ulica most samochód kościół',
+              title: 'Tytuł wpisu',
+              date: '15.04.2021',
+              description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet'
+            },
+            {
+              imageUrl: 'assets/img/fotoSlider.png',
+              imageAlt: 'Oświetlona ulica most samochód kościół',
+              title: 'Tytuł wpisu',
+              date: '15.04.2021',
+              description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet'
+            },
+          ],
+        }
+      },
+      bestFurnitureParallax: {
+        backgroundImage: '/assets/img/kuchnia2.png',
+        h1: 'Najlepsze meble',
+        button: {
+          buttonText: 'NASZE REALIZACJE'
+        }
+      },
+      footer: {
+        header: {
+          h1: 'Napisz do nas!',
+          p: ' Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et',
+          footerContact: {
+            facebook: {
+              url: '#',
+              aText: 'Facebook',
+              show: true
+            },
+            instagram: {
+              url: '#',
+              aText: 'Instagram',
+              show: true
+            },
+            telephone: {
+              url: '+48123456789',
+              aText: '+48 123 456 789',
+              show: true
+            },
+            mail: {
+              url: 'kontakt@stolzdrewna.pl',
+              aText: 'Instagram',
+              show: true
+            }
+          }
+        }
       }
     }
   },
