@@ -19,13 +19,13 @@
 
 <script>
 export default {
-  name: "OtherProjectsSection"
+  name: "OtherProjectsSection",
 }
 </script>
 
 <style scoped>
 .other-projects {
-  padding: 20px;
+  padding: 60px 20px 60px 20px;
 }
 
 .other-projects header {

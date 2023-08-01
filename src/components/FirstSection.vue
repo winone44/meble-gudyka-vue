@@ -3,7 +3,7 @@
     <header class="main-header">
       <h2>{{$store.state.data.firstSection.mainHeader.h2}}</h2>
       <p>{{ $store.state.data.firstSection.mainHeader.p }}</p>
-      <button class="contact-button">{{ $store.state.data.firstSection.mainHeader.button.buttonText }}</button>
+      <button @click="scrollToFooter" class="contact-button">{{ $store.state.data.firstSection.mainHeader.button.buttonText }}</button>
     </header>
     <div class="contact-icons">
       <!--Telephone fill-->
@@ -45,6 +45,14 @@ export default {
     backgroundStyle() {
       const url = this.$store.state.data.firstSection.backgroundImage;
       return `background-image: url(${url});`
+    }
+  },
+  methods: {
+    scrollToFooter() {
+      const element = document.querySelector('footer');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   }
 }

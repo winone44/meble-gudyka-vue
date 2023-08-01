@@ -2,7 +2,7 @@
   <section class="best-furniture-parallax" :style="backgroundStyle">
     <header>
       <h1 class="best-furniture-parallax-transparent-text">{{ $store.state.data.bestFurnitureParallax.h1 }}</h1>
-      <button id="best-furniture-parallax-button">{{
+      <button @click="scrollToOtherProjects" id="best-furniture-parallax-button">{{
           $store.state.data.bestFurnitureParallax.button.buttonText
         }}
       </button>
@@ -17,6 +17,14 @@ export default {
     backgroundStyle() {
       const url = this.$store.state.data.bestFurnitureParallax.backgroundImage;
       return `background-image: url(${url});`
+    }
+  },
+  methods: {
+    scrollToOtherProjects() {
+      const element = document.querySelector('.other-projects');
+      if (element) {
+        element.scrollIntoView({behavior: 'smooth'});
+      }
     }
   }
 }

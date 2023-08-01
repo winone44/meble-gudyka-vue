@@ -2,7 +2,7 @@
   <section class="parallax" :style="backgroundStyle">
     <div class="parallax-container">
       <img :src="$store.state.data.parallax.logoUrl" alt="">
-      <button class="contact-button">{{ $store.state.data.parallax.button.buttonText }}</button>
+      <button @click="scrollToFooter" class="contact-button">{{ $store.state.data.parallax.button.buttonText }}</button>
     </div>
   </section>
 </template>
@@ -14,6 +14,14 @@ export default {
     backgroundStyle() {
       const url = this.$store.state.data.parallax.backgroundImage;
       return `background-image: url(${url});`
+    }
+  },
+  methods: {
+    scrollToFooter() {
+      const element = document.querySelector('footer');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   }
 }

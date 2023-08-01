@@ -14,14 +14,22 @@
       </div>
     </div>
     <div>
-      <button id="folders-button">{{ $store.state.data.howWeWork.button.buttonText }}</button>
+      <button @click="scrollToOtherProjects" id="folders-button">{{ $store.state.data.howWeWork.button.buttonText }}</button>
     </div>
   </section>
 </template>
 
 <script>
 export default {
-  name: "HowWeWorkSection"
+  name: "HowWeWorkSection",
+  methods: {
+    scrollToOtherProjects() {
+      const element = document.querySelector('.other-projects');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }
 }
 </script>
 
