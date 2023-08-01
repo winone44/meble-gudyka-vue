@@ -261,8 +261,8 @@
                 </b-col>
                 <b-col class="d-flex align-items-center">
                   <b-form-checkbox
-                      id="checkbox-3"
-                      name="checkbox-3"
+                      id="checkbox-4"
+                      name="checkbox-4"
                       v-model="$store.state.data.customerReviews.buttons.googleButton.show"
                   >
                     Pokaż ikonę google
@@ -281,8 +281,8 @@
                 </b-col>
                 <b-col class="d-flex align-items-center">
                   <b-form-checkbox
-                      id="checkbox-3"
-                      name="checkbox-3"
+                      id="checkbox-5"
+                      name="checkbox-5"
                       v-model="$store.state.data.customerReviews.buttons.facebookButton.show"
                   >
                     Pokaż ikonę facebook
@@ -428,6 +428,90 @@
                 >
                 </b-form-textarea>
               </b-form-group>
+              <b-row>
+                <b-col class="col-8">
+                  <b-form-group
+                      label="Url do profilu facebook"
+                  >
+                    <b-form-input
+                        v-model="$store.state.data.footer.header.footerContact.facebook.url"
+                    >
+                    </b-form-input>
+                  </b-form-group>
+                </b-col>
+                <b-col>
+                  <b-form-checkbox
+                      id="checkbox-6"
+                      name="checkbox-6"
+                      v-model="$store.state.data.footer.header.footerContact.facebook.show"
+                  >
+                    Pokaż kontakt facebook
+                  </b-form-checkbox>
+                </b-col>
+              </b-row>
+              <b-row>
+                <b-col class="col-8">
+                  <b-form-group
+                      label="Url do profilu instagram"
+                  >
+                    <b-form-input
+                        v-model="$store.state.data.footer.header.footerContact.instagram.url"
+                    >
+                    </b-form-input>
+                  </b-form-group>
+                </b-col>
+                <b-col>
+                  <b-form-checkbox
+                      id="checkbox-7"
+                      name="checkbox-7"
+                      v-model="$store.state.data.footer.header.footerContact.instagram.show"
+                  >
+                    Pokaż kontakt instagram
+                  </b-form-checkbox>
+                </b-col>
+              </b-row>
+              <b-row>
+                <b-col class="col-8">
+                  <b-form-group
+                      label="Telefon"
+                  >
+                    <b-form-textarea
+                        v-model="$store.state.data.footer.header.footerContact.telephone.url"
+                    >
+                    </b-form-textarea>
+                  </b-form-group>
+                </b-col>
+                <b-col>
+                  <b-form-checkbox
+                      id="checkbox-8"
+                      name="checkbox-8"
+                      v-model="$store.state.data.footer.header.footerContact.telephone.show"
+                  >
+                    Pokaż numer telefonu
+                  </b-form-checkbox>
+                </b-col>
+              </b-row>
+              <b-row>
+                <b-col class="col-8">
+                  <b-form-group
+                      label="Tekst"
+                  >
+                    <b-form-textarea
+                        v-model="$store.state.data.footer.header.footerContact.mail.url"
+                    >
+                    </b-form-textarea>
+                  </b-form-group>
+                </b-col>
+                <b-col>
+                  <b-form-checkbox
+                      id="checkbox-9"
+                      name="checkbox-9"
+                      v-model="$store.state.data.footer.header.footerContact.mail.show"
+                  >
+                    Pokaż kontakt mailowy
+                  </b-form-checkbox>
+                </b-col>
+              </b-row>
             </b-form>
           </b-card-body>
         </b-collapse>

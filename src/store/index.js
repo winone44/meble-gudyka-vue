@@ -188,22 +188,18 @@ const store = new Vuex.Store({
           footerContact: {
             facebook: {
               url: '#',
-              aText: 'Facebook',
               show: true
             },
             instagram: {
               url: '#',
-              aText: 'Instagram',
               show: true
             },
             telephone: {
               url: '+48123456789',
-              aText: '+48 123 456 789',
               show: true
             },
             mail: {
               url: 'kontakt@stolzdrewna.pl',
-              aText: 'Instagram',
               show: true
             }
           }

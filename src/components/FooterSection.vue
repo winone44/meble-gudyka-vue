@@ -12,28 +12,28 @@
             :href="$store.state.data.footer.header.footerContact.facebook.url"
         >
           <BIconFacebook/>
-          {{ $store.state.data.footer.header.footerContact.facebook.aText }}
+          Facebook
         </a>
         <a
             v-if="$store.state.data.footer.header.footerContact.instagram.show"
             :href="$store.state.data.footer.header.footerContact.instagram.url"
         >
           <BIconInstagram/>
-          {{ $store.state.data.footer.header.footerContact.instagram.aText }}
+          Instagram
         </a>
         <a
             v-if="$store.state.data.footer.header.footerContact.telephone.show"
             :href="'tel:'+ $store.state.data.footer.header.footerContact.telephone.url"
         >
           <BIconTelephoneFill/>
-          {{ $store.state.data.footer.header.footerContact.telephone.aText }}
+          {{ $store.state.data.footer.header.footerContact.telephone.url }}
         </a>
         <a
             v-if="$store.state.data.footer.header.footerContact.mail.show"
             :href="'mailto:' + $store.state.data.footer.header.footerContact.mail.url"
         >
           <BIconEnvelopeFill/>
-          {{ $store.state.data.footer.header.footerContact.mail.aText }}
+          {{ $store.state.data.footer.header.footerContact.mail.url }}
         </a>
       </div>
     </header>
