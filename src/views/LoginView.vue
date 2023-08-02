@@ -7,13 +7,15 @@
             <b-card-body class="p-5 text-center">
               <h3 class="mb-5">Zaloguj się</h3>
               <div class="form-outline mb-4">
-                <b-form @submit="onSubmit">
+                <b-form @submit.prevent="onSubmit">
                   <b-form-group
-                      label="Nazwa użytkownika:"
+                      label="Email:"
+                      type="email"
+                      required
                   >
                     <b-form-input
-                        v-model="username"
-                        placeholder="Wpisz swoją nazwę użytkownika"
+                        v-model="email"
+                        placeholder="Wpisz swój email"
                     ></b-form-input>
                   </b-form-group>
                   <b-form-group
@@ -21,6 +23,8 @@
                   >
                     <b-form-input
                         v-model="password"
+                        type="password"
+                        required
                         placeholder="Wpisz swoje hasło"
                     ></b-form-input>
                   </b-form-group>
@@ -42,7 +46,7 @@ export default {
   name: "LoginView",
   data() {
     return {
-      username: '',
+      email: '',
       password: ''
     }
   },
@@ -52,9 +56,12 @@ export default {
     }
   },
   methods: {
-     onSubmit(){
-      this.$store.state.isAuth = true;
-      this.$router.push({name: 'admin-panel'})
+     async onSubmit(){
+       await this.$store.dispatch('login', {
+         email: this.email,
+         password: this.password
+       })
+      await this.$router.push({name: 'admin-panel'})
     },
   },
 }

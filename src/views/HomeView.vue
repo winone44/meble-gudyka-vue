@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <NavbarComponent />
-    <BackButtonComponent v-if="$store.state.isAuth" />
+    <BackButtonComponent v-if="$store.getters.isAuth" />
     <FirstSection/>
     <OtherProjectsSection />
     <ParallaxSection />

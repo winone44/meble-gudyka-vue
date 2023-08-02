@@ -8,7 +8,7 @@ import store from "@/store";
 Vue.use(VueRouter)
 
 const authGuard = (to, from, next) => {
-  if (store.state.isAuth) {
+  if (store.getters.isAuth) {
     console.log("authGuard " + store.state.isAuth)
     next();
   }else {
@@ -18,7 +18,7 @@ const authGuard = (to, from, next) => {
 }
 
 const notAuthGuard = (to, from, next) => {
-  if (!store.state.isAuth) {
+  if (!store.getters.isAuth) {
     console.log("notAuthGuard " + store.state.isAuth)
     next();
   }else {

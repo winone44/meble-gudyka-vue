@@ -1,11 +1,22 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import router from "@/router";
+import qs from "qs";
+import axios from "axios";
 
 Vue.use(Vuex)
 
+const API_URL = "http://127.0.0.1:8000/api/";
+
+const apiClient = axios.create({
+  baseURL: process.env.VUE_APP_API_BASE_URL,
+});
+
 const store = new Vuex.Store({
   state: {
-    isAuth: false,
+    accessToken: null,
+    refreshToken: null,
+    userId: null,
     data: {
       firstSection: {
         backgroundImage: '/assets/img/fotka.png',
@@ -208,10 +219,129 @@ const store = new Vuex.Store({
     }
   },
   getters: {
+    isAuth: state => {
+      return state.accessToken !== null && state.accessToken !== undefined
+    }
   },
   mutations: {
+    auth(state, payload) {
+      state.accessToken = payload.accessToken;
+      state.refreshToken = payload.refreshToken;
+      state.userId = payload.userId;
+
+      console.log('accessToken')
+      console.log(payload.accessToken)
+      console.log('refreshToken')
+      console.log(payload.refreshToken)
+      if (payload.accessToken) {
+        apiClient.defaults.headers.common['Authorization'] = `Bearer ${payload.accessToken}`;
+      } else {
+        delete apiClient.defaults.headers.common['Authorization'];
+      }
+    },
+    updateTokens(state, payload) {
+      state.accessToken = payload.accessToken;
+
+      console.log('accessToken')
+      console.log(payload.accessToken)
+      if (payload.accessToken) {
+        apiClient.defaults.headers.common['Authorization'] = `Bearer ${payload.accessToken}`;
+      } else {
+        delete apiClient.defaults.headers.common['Authorization'];
+      }
+    },
   },
   actions: {
+    async login({commit, dispatch}, payload) {
+      try {
+        console.log(payload);
+        let response = await apiClient.post(`${API_URL}accounts/login`, qs.stringify(payload))
+        console.log(response);
+        console.log(response.data.localId);
+        commit('auth', {
+          accessToken: response.data.access,
+          refreshToken: response.data.refresh,
+          userId: response.data.localId
+        });
+
+
+
+        const now = new Date();
+        const endDate = new Date(now.getTime() + response.data.refresh_token_lifetime * 1000)
+        localStorage.setItem('accessToken', response.data.access);
+        localStorage.setItem('refreshToken', response.data.refresh);
+        localStorage.setItem('userId', response.data.localId);
+        localStorage.setItem('expires', endDate);
+
+        console.log(response.data.refresh_token_lifetime)
+
+        setTimeout(() => {
+          dispatch('logout');
+        }, response.data.refresh_token_lifetime * 1000)
+
+      } catch (e) {
+        commit('setResponse', {
+          response: e
+        });
+        console.log(e)
+      }
+    },
+    async refreshTokens({ state, commit }) {
+      try {
+        let response = await apiClient.post(`${API_URL}accounts/token-refresh/`, {
+          refresh: state.refreshToken,
+        });
+        commit('updateTokens', {
+          accessToken: response.data.access,
+        });
+        console.log('refreshTokens Action')
+        console.log(response.data.access)
+        localStorage.setItem('accessToken', response.data.access);
+      } catch (error) {
+        console.error(error);
+      }
+
+
+    },
+    logout({commit}) {
+      commit('clearAuth');
+      localStorage.removeItem('accessToken');
+      localStorage.removeItem('refreshToken');
+      localStorage.removeItem('userId');
+      localStorage.removeItem('expires');
+      router.push('/');
+
+    },
+    autologin({commit, dispatch}) {
+      const accessToken = localStorage.getItem('accessToken')
+      const refreshToken = localStorage.getItem('refreshToken')
+      if (!accessToken) {
+        return;
+      }
+      const userId = localStorage.getItem('userId')
+      if (!userId) {
+        return;
+      }
+      const expirationDate = new Date(localStorage.getItem('expires'));
+      const now = new Date();
+      if (now >= expirationDate) {
+        localStorage.removeItem('accessToken');
+        localStorage.removeItem('accessToken');
+        localStorage.removeItem('userId');
+        localStorage.removeItem('expires');
+        return;
+      }
+
+      commit('auth', {
+        accessToken,
+        refreshToken,
+        userId
+      });
+      console.log("Pozostało tyle sekund: ", expirationDate.getTime() - now.getTime())
+      setTimeout(() => {
+        dispatch('logout');
+      },expirationDate.getTime() - now.getTime())
+    },
   },
   modules: {
   }
