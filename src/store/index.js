@@ -12,11 +12,35 @@ const apiClient = axios.create({
   baseURL: process.env.VUE_APP_API_BASE_URL,
 });
 
+async function onRequestFailure(error, store) {
+  const { config } = error;
+  if (error.response.status === 401 && config && !config.__isRetryRequest) {
+    // Jeśli odpowiedź to 401 Unauthorized, spróbuj odświeżyć tokeny
+    try {
+      await store.dispatch('refreshTokens');
+      // Jeśli odświeżanie się powiedzie, spróbuj ponownie wykonać żądanie z nowym tokenem
+      config.__isRetryRequest = true;
+      // Aktualizuj token w konfiguracji żądania
+      config.headers['Authorization'] = `Bearer ${store.state.accessToken}`;
+      const response = apiClient(config);
+      console.log(response);
+      return response;
+    } catch (refreshError) {
+      // Jeśli odświeżanie się nie powiedzie, wyloguj użytkownika
+      store.dispatch('logout');
+      // Przekieruj do strony logowania lub innego komponentu
+      router.push({ name: 'login' });
+    }
+  }
+  return Promise.reject(error);
+}
+
 const store = new Vuex.Store({
   state: {
     accessToken: null,
     refreshToken: null,
     userId: null,
+    username: null,
     data: {
       firstSection: {
         backgroundImage: '/assets/img/fotka.png',
@@ -228,6 +252,7 @@ const store = new Vuex.Store({
       state.accessToken = payload.accessToken;
       state.refreshToken = payload.refreshToken;
       state.userId = payload.userId;
+      state.username = payload.username;
 
       console.log('accessToken')
       console.log(payload.accessToken)
@@ -250,6 +275,13 @@ const store = new Vuex.Store({
         delete apiClient.defaults.headers.common['Authorization'];
       }
     },
+    clearAuth(state) {
+      state.accessToken = null;
+      state.refreshToken = null;
+      state.userId = null;
+      state.username = null;
+      delete apiClient.defaults.headers.common['Authorization'];
+    },
   },
   actions: {
     async login({commit, dispatch}, payload) {
@@ -261,7 +293,8 @@ const store = new Vuex.Store({
         commit('auth', {
           accessToken: response.data.access,
           refreshToken: response.data.refresh,
-          userId: response.data.localId
+          userId: response.data.localId,
+          username: response.data.username
         });
 
 
@@ -271,6 +304,7 @@ const store = new Vuex.Store({
         localStorage.setItem('accessToken', response.data.access);
         localStorage.setItem('refreshToken', response.data.refresh);
         localStorage.setItem('userId', response.data.localId);
+        localStorage.setItem('username', response.data.username);
         localStorage.setItem('expires', endDate);
 
         console.log(response.data.refresh_token_lifetime)
@@ -309,6 +343,7 @@ const store = new Vuex.Store({
       localStorage.removeItem('refreshToken');
       localStorage.removeItem('userId');
       localStorage.removeItem('expires');
+      localStorage.removeItem('username');
       router.push('/');
 
     },
@@ -318,6 +353,7 @@ const store = new Vuex.Store({
       if (!accessToken) {
         return;
       }
+      const username = localStorage.getItem('username')
       const userId = localStorage.getItem('userId')
       if (!userId) {
         return;
@@ -329,13 +365,15 @@ const store = new Vuex.Store({
         localStorage.removeItem('accessToken');
         localStorage.removeItem('userId');
         localStorage.removeItem('expires');
+        localStorage.removeItem('username');
         return;
       }
 
       commit('auth', {
         accessToken,
         refreshToken,
-        userId
+        userId,
+        username
       });
       console.log("Pozostało tyle sekund: ", expirationDate.getTime() - now.getTime())
       setTimeout(() => {
@@ -346,5 +384,10 @@ const store = new Vuex.Store({
   modules: {
   }
 })
+
+apiClient.interceptors.response.use(
+    (response) => response,
+    (error) => onRequestFailure(error, store)
+);
 
 export default store;

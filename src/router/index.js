@@ -7,6 +7,8 @@ import store from "@/store";
 
 Vue.use(VueRouter)
 
+store.dispatch('autologin');
+
 const authGuard = (to, from, next) => {
   if (store.getters.isAuth) {
     console.log("authGuard " + store.state.isAuth)

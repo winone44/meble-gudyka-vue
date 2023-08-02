@@ -1,524 +1,546 @@
 <template>
   <div>
-    <div class="accordion" role="tablist">
-      <b-card no-body class="mb-1">
-        <b-card-header header-tag="header" class="p-1" role="tab">
-          <b-button block v-b-toggle.accordion-1 variant="info">first-section</b-button>
-        </b-card-header>
-        <b-collapse id="accordion-1" visible accordion="my-accordion" role="tabpanel">
-          <b-card-body>
-            <b-form>
-              <b-form-group
-                  label="Tło:"
-              >
-                <b-form-input
-                    v-model="$store.state.data.firstSection.backgroundImage"
-                ></b-form-input>
-              </b-form-group>
-              <b-form-group
-                  label="Nagłówek:"
-              >
-                <b-form-input
-                    v-model="$store.state.data.firstSection.mainHeader.h2"
-                ></b-form-input>
-              </b-form-group>
-              <b-form-group
-                  label="Paragraf:"
-              >
-                <b-form-textarea
-                    v-model="$store.state.data.firstSection.mainHeader.p"
-                ></b-form-textarea>
-              </b-form-group>
-              <b-row>
-                <b-col class="col-8">
-                  <b-form-group
-                      label="Ikona telefonu:"
+    <b-navbar toggleable="lg" type="dark" variant="info">
+      <b-navbar-brand href="#">Panel Administracyjny</b-navbar-brand>
 
-                  >
-                    <b-form-input
-                        v-model="$store.state.data.firstSection.contactIcons.telephone.telNumber"
-                    ></b-form-input>
-                  </b-form-group>
+      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
-                </b-col>
-                <b-col class="d-flex align-items-center">
-                  <b-form-checkbox
-                      id="checkbox-1"
-                      name="checkbox-1"
-                      v-model="$store.state.data.firstSection.contactIcons.telephone.show"
-                  >
-                    Pokaż ikonę telefonu
-                  </b-form-checkbox>
-                </b-col>
-              </b-row>
-              <b-row>
-                <b-col class="col-8">
-                  <b-form-group
-                      label="Ikona facebook:"
-                  >
-                    <b-form-input
-                        v-model="$store.state.data.firstSection.contactIcons.facebook.fbUrl"
-                    ></b-form-input>
-                  </b-form-group>
-                </b-col>
-                <b-col class="d-flex align-items-center">
-                  <b-form-checkbox
-                      id="checkbox-2"
-                      name="checkbox-2"
-                      v-model="$store.state.data.firstSection.contactIcons.facebook.show"
-                  >
-                    Pokaż ikonę facebook
-                  </b-form-checkbox>
-                </b-col>
-              </b-row>
-              <b-row>
-                <b-col class="col-8">
-                  <b-form-group
-                      label="Ikona koperty:"
-                  >
-                    <b-form-input
-                        v-model="$store.state.data.firstSection.contactIcons.envelope.mail"
-                    ></b-form-input>
-                  </b-form-group>
-                </b-col>
-                <b-col class="d-flex align-items-center">
-                  <b-form-checkbox
-                      id="checkbox-3"
-                      name="checkbox-3"
-                      v-model="$store.state.data.firstSection.contactIcons.envelope.show"
-                  >
-                    Pokaż ikonę koperty
-                  </b-form-checkbox>
-                </b-col>
-              </b-row>
+      <b-collapse id="nav-collapse" is-nav>
 
-            </b-form>
-          </b-card-body>
-        </b-collapse>
-      </b-card>
+        <!-- Right aligned nav items -->
+        <b-navbar-nav class="ml-auto">
 
-      <b-card no-body class="mb-1">
-        <b-card-header header-tag="header" class="p-1" role="tab">
-          <b-button block v-b-toggle.accordion-2 variant="info">other-projects</b-button>
-        </b-card-header>
-        <b-collapse id="accordion-2" accordion="my-accordion" role="tabpanel">
-          <b-card-body>
-            <b-form>
-              <b-form-group
-                  label="Nagłówek"
-              >
-                <b-form-input
-                    v-model="$store.state.data.otherProjects.header.h2"
-                ></b-form-input>
-              </b-form-group>
-              <div class="my-5" v-for="(item, index) in $store.state.data.otherProjects.gallery"
-                   :key="item.galleryTitle.p">
+          <b-nav-item-dropdown right>
+            <!-- Using 'button-content' slot -->
+            <template #button-content>
+              <em>{{ $store.state.username }}</em>
+            </template>
+            <b-dropdown-item href="#">Zmień hasło</b-dropdown-item>
+            <b-dropdown-item @click="logout">Wyloguj się</b-dropdown-item>
+          </b-nav-item-dropdown>
+        </b-navbar-nav>
+      </b-collapse>
+    </b-navbar>
+    <b-container class="mt-5">
+      <div class="accordion" role="tablist">
+        <b-card no-body class="mb-1">
+          <b-card-header header-tag="header" class="p-1" role="tab">
+            <b-button block v-b-toggle.accordion-1 variant="info">first-section</b-button>
+          </b-card-header>
+          <b-collapse id="accordion-1" visible accordion="my-accordion" role="tabpanel">
+            <b-card-body>
+              <b-form>
                 <b-form-group
-                    :label="'Url zdjęcia nr ' + (index + 1)"
+                    label="Tło:"
                 >
                   <b-form-input
-                      v-model="$store.state.data.otherProjects.gallery[index].galleryImage.imageUrl"
+                      v-model="$store.state.data.firstSection.backgroundImage"
                   ></b-form-input>
                 </b-form-group>
                 <b-form-group
-                    :label="'Tytuł zdjęcie nr ' + (index + 1)"
+                    label="Nagłówek:"
                 >
                   <b-form-input
-                      v-model="$store.state.data.otherProjects.gallery[index].galleryTitle.p"
+                      v-model="$store.state.data.firstSection.mainHeader.h2"
                   ></b-form-input>
                 </b-form-group>
                 <b-form-group
-                    :label="'Tekst alternatywny zdjęcie nr ' + (index + 1)"
-                >
-                  <b-form-input
-                      v-model="$store.state.data.otherProjects.gallery[index].galleryImage.imageAlt"
-                  ></b-form-input>
-                </b-form-group>
-              </div>
-              <b-button @click="addNewGalleryItem">+</b-button>
-            </b-form>
-          </b-card-body>
-        </b-collapse>
-      </b-card>
-
-      <b-card no-body class="mb-1">
-        <b-card-header header-tag="header" class="p-1" role="tab">
-          <b-button block v-b-toggle.accordion-3 variant="info">parallax</b-button>
-        </b-card-header>
-        <b-collapse id="accordion-3" accordion="my-accordion" role="tabpanel">
-          <b-card-body>
-            <b-form>
-              <b-form-group
-                  label="Tło"
-              >
-                <b-form-input
-                    v-model="$store.state.data.parallax.backgroundImage"
-                >
-                </b-form-input>
-              </b-form-group>
-              <b-form-group
-                  label="Logo"
-              >
-                <b-form-input
-                    v-model="$store.state.data.parallax.logoUrl"
-                >
-                </b-form-input>
-              </b-form-group>
-              <b-form-group
-                  label="Nazwa przycisku"
-              >
-                <b-form-input
-                    v-model="$store.state.data.parallax.button.buttonText"
-                >
-                </b-form-input>
-              </b-form-group>
-            </b-form>
-          </b-card-body>
-        </b-collapse>
-      </b-card>
-
-      <b-card no-body class="mb-1">
-        <b-card-header header-tag="header" class="p-1" role="tab">
-          <b-button block v-b-toggle.accordion-4 variant="info">how-we-work</b-button>
-        </b-card-header>
-        <b-collapse id="accordion-4" accordion="my-accordion" role="tabpanel">
-          <b-card-body>
-            <b-form>
-              <b-form-group
-                  label="Nagłówek"
-              >
-                <b-form-input
-                    v-model="$store.state.data.howWeWork.header.h1"
-                ></b-form-input>
-              </b-form-group>
-              <div class="my-5" v-for="(item, index) in $store.state.data.howWeWork.folders" :key="item.h2">
-                <b-form-group
-                    :label="'Folder ' + (index + 1) + ' - Nagłówek'"
-                >
-                  <b-form-input
-                      v-model="$store.state.data.howWeWork.folders[index].h2"
-                  ></b-form-input>
-                </b-form-group>
-                <b-form-group
-                    label="Tekst folderu"
+                    label="Paragraf:"
                 >
                   <b-form-textarea
-                      v-model="$store.state.data.howWeWork.folders[index].p"
+                      v-model="$store.state.data.firstSection.mainHeader.p"
                   ></b-form-textarea>
                 </b-form-group>
-              </div>
-              <b-button class="mb-5" @click="addNewFolderItem">+</b-button>
-              <b-form-group
-                  label="Nazwa przyciksu"
-                  class="mt-5"
-              >
-                <b-form-input
-                    v-model="$store.state.data.howWeWork.button.buttonText"
-                ></b-form-input>
-              </b-form-group>
-            </b-form>
-          </b-card-body>
-        </b-collapse>
-      </b-card>
+                <b-row>
+                  <b-col class="col-8">
+                    <b-form-group
+                        label="Ikona telefonu:"
 
-      <b-card no-body class="mb-1">
-        <b-card-header header-tag="header" class="p-1" role="tab">
-          <b-button block v-b-toggle.accordion-5 variant="info">customer-reviews</b-button>
-        </b-card-header>
-        <b-collapse id="accordion-5" accordion="my-accordion" role="tabpanel">
-          <b-card-body>
-            <b-form>
-              <b-form-group
-                  label="Tło"
-              >
-                <b-form-input
-                    v-model="$store.state.data.customerReviews.backgroundImage"
-                ></b-form-input>
-              </b-form-group>
-              <b-form-group
-                  label="Nagłówek"
-              >
-                <b-form-input
-                    v-model="$store.state.data.customerReviews.h1"
-                ></b-form-input>
-              </b-form-group>
-              <b-form-group
-                  label="Tekst"
-              >
-                <b-form-textarea
-                    v-model="$store.state.data.customerReviews.p"
-                ></b-form-textarea>
-              </b-form-group>
-              <b-row>
-                <b-col class="col-8">
+                    >
+                      <b-form-input
+                          v-model="$store.state.data.firstSection.contactIcons.telephone.telNumber"
+                      ></b-form-input>
+                    </b-form-group>
+
+                  </b-col>
+                  <b-col class="d-flex align-items-center">
+                    <b-form-checkbox
+                        id="checkbox-1"
+                        name="checkbox-1"
+                        v-model="$store.state.data.firstSection.contactIcons.telephone.show"
+                    >
+                      Pokaż ikonę telefonu
+                    </b-form-checkbox>
+                  </b-col>
+                </b-row>
+                <b-row>
+                  <b-col class="col-8">
+                    <b-form-group
+                        label="Ikona facebook:"
+                    >
+                      <b-form-input
+                          v-model="$store.state.data.firstSection.contactIcons.facebook.fbUrl"
+                      ></b-form-input>
+                    </b-form-group>
+                  </b-col>
+                  <b-col class="d-flex align-items-center">
+                    <b-form-checkbox
+                        id="checkbox-2"
+                        name="checkbox-2"
+                        v-model="$store.state.data.firstSection.contactIcons.facebook.show"
+                    >
+                      Pokaż ikonę facebook
+                    </b-form-checkbox>
+                  </b-col>
+                </b-row>
+                <b-row>
+                  <b-col class="col-8">
+                    <b-form-group
+                        label="Ikona koperty:"
+                    >
+                      <b-form-input
+                          v-model="$store.state.data.firstSection.contactIcons.envelope.mail"
+                      ></b-form-input>
+                    </b-form-group>
+                  </b-col>
+                  <b-col class="d-flex align-items-center">
+                    <b-form-checkbox
+                        id="checkbox-3"
+                        name="checkbox-3"
+                        v-model="$store.state.data.firstSection.contactIcons.envelope.show"
+                    >
+                      Pokaż ikonę koperty
+                    </b-form-checkbox>
+                  </b-col>
+                </b-row>
+
+              </b-form>
+            </b-card-body>
+          </b-collapse>
+        </b-card>
+
+        <b-card no-body class="mb-1">
+          <b-card-header header-tag="header" class="p-1" role="tab">
+            <b-button block v-b-toggle.accordion-2 variant="info">other-projects</b-button>
+          </b-card-header>
+          <b-collapse id="accordion-2" accordion="my-accordion" role="tabpanel">
+            <b-card-body>
+              <b-form>
+                <b-form-group
+                    label="Nagłówek"
+                >
+                  <b-form-input
+                      v-model="$store.state.data.otherProjects.header.h2"
+                  ></b-form-input>
+                </b-form-group>
+                <div class="my-5" v-for="(item, index) in $store.state.data.otherProjects.gallery"
+                     :key="item.galleryTitle.p">
                   <b-form-group
-                      label="Przycisk google tekst:"
+                      :label="'Url zdjęcia nr ' + (index + 1)"
                   >
                     <b-form-input
-                        v-model="$store.state.data.customerReviews.buttons.googleButton.buttonText"
+                        v-model="$store.state.data.otherProjects.gallery[index].galleryImage.imageUrl"
                     ></b-form-input>
                   </b-form-group>
-                </b-col>
-                <b-col class="d-flex align-items-center">
-                  <b-form-checkbox
-                      id="checkbox-4"
-                      name="checkbox-4"
-                      v-model="$store.state.data.customerReviews.buttons.googleButton.show"
-                  >
-                    Pokaż ikonę google
-                  </b-form-checkbox>
-                </b-col>
-              </b-row>
-              <b-row>
-                <b-col class="col-8">
                   <b-form-group
-                      label="Przycisk facebook tekst:"
+                      :label="'Tytuł zdjęcie nr ' + (index + 1)"
                   >
                     <b-form-input
-                        v-model="$store.state.data.customerReviews.buttons.facebookButton.buttonText"
+                        v-model="$store.state.data.otherProjects.gallery[index].galleryTitle.p"
                     ></b-form-input>
                   </b-form-group>
-                </b-col>
-                <b-col class="d-flex align-items-center">
-                  <b-form-checkbox
-                      id="checkbox-5"
-                      name="checkbox-5"
-                      v-model="$store.state.data.customerReviews.buttons.facebookButton.show"
+                  <b-form-group
+                      :label="'Tekst alternatywny zdjęcie nr ' + (index + 1)"
                   >
-                    Pokaż ikonę facebook
-                  </b-form-checkbox>
-                </b-col>
-              </b-row>
-            </b-form>
-          </b-card-body>
-        </b-collapse>
-      </b-card>
+                    <b-form-input
+                        v-model="$store.state.data.otherProjects.gallery[index].galleryImage.imageAlt"
+                    ></b-form-input>
+                  </b-form-group>
+                </div>
+                <b-button @click="addNewGalleryItem">+</b-button>
+              </b-form>
+            </b-card-body>
+          </b-collapse>
+        </b-card>
 
-      <b-card no-body class="mb-1">
-        <b-card-header header-tag="header" class="p-1" role="tab">
-          <b-button block v-b-toggle.accordion-6 variant="info">our-knowledge</b-button>
-        </b-card-header>
-        <b-collapse id="accordion-6" accordion="my-accordion" role="tabpanel">
-          <b-card-body>
-            <b-form>
-              <b-form-group
-                  label="Nagłówek"
-              >
-                <b-form-input
-                    v-model="$store.state.data.ourKnowledge.header.h1"
-                >
-                </b-form-input>
-              </b-form-group>
-              <b-form-group
-                  label="Tekst"
-              >
-                <b-form-textarea
-                    v-model="$store.state.data.ourKnowledge.header.p"
-                >
-                </b-form-textarea>
-              </b-form-group>
-              <b-form-group
-                  label="Przycisk"
-              >
-                <b-form-input
-                    v-model="$store.state.data.ourKnowledge.header.button.buttonText"
-                >
-                </b-form-input>
-              </b-form-group>
-              <div class="my-5" v-for="(item, index) in $store.state.data.ourKnowledge.slider.items"
-                   :key="index">
+        <b-card no-body class="mb-1">
+          <b-card-header header-tag="header" class="p-1" role="tab">
+            <b-button block v-b-toggle.accordion-3 variant="info">parallax</b-button>
+          </b-card-header>
+          <b-collapse id="accordion-3" accordion="my-accordion" role="tabpanel">
+            <b-card-body>
+              <b-form>
                 <b-form-group
-                    :label="'Url zdjęcia. Slide nr ' + (index + 1)"
+                    label="Tło"
                 >
                   <b-form-input
-                      v-model="$store.state.data.ourKnowledge.slider.items[index].imageUrl"
+                      v-model="$store.state.data.parallax.backgroundImage"
+                  >
+                  </b-form-input>
+                </b-form-group>
+                <b-form-group
+                    label="Logo"
+                >
+                  <b-form-input
+                      v-model="$store.state.data.parallax.logoUrl"
+                  >
+                  </b-form-input>
+                </b-form-group>
+                <b-form-group
+                    label="Nazwa przycisku"
+                >
+                  <b-form-input
+                      v-model="$store.state.data.parallax.button.buttonText"
+                  >
+                  </b-form-input>
+                </b-form-group>
+              </b-form>
+            </b-card-body>
+          </b-collapse>
+        </b-card>
+
+        <b-card no-body class="mb-1">
+          <b-card-header header-tag="header" class="p-1" role="tab">
+            <b-button block v-b-toggle.accordion-4 variant="info">how-we-work</b-button>
+          </b-card-header>
+          <b-collapse id="accordion-4" accordion="my-accordion" role="tabpanel">
+            <b-card-body>
+              <b-form>
+                <b-form-group
+                    label="Nagłówek"
+                >
+                  <b-form-input
+                      v-model="$store.state.data.howWeWork.header.h1"
+                  ></b-form-input>
+                </b-form-group>
+                <div class="my-5" v-for="(item, index) in $store.state.data.howWeWork.folders" :key="item.h2">
+                  <b-form-group
+                      :label="'Folder ' + (index + 1) + ' - Nagłówek'"
+                  >
+                    <b-form-input
+                        v-model="$store.state.data.howWeWork.folders[index].h2"
+                    ></b-form-input>
+                  </b-form-group>
+                  <b-form-group
+                      label="Tekst folderu"
+                  >
+                    <b-form-textarea
+                        v-model="$store.state.data.howWeWork.folders[index].p"
+                    ></b-form-textarea>
+                  </b-form-group>
+                </div>
+                <b-button class="mb-5" @click="addNewFolderItem">+</b-button>
+                <b-form-group
+                    label="Nazwa przyciksu"
+                    class="mt-5"
+                >
+                  <b-form-input
+                      v-model="$store.state.data.howWeWork.button.buttonText"
+                  ></b-form-input>
+                </b-form-group>
+              </b-form>
+            </b-card-body>
+          </b-collapse>
+        </b-card>
+
+        <b-card no-body class="mb-1">
+          <b-card-header header-tag="header" class="p-1" role="tab">
+            <b-button block v-b-toggle.accordion-5 variant="info">customer-reviews</b-button>
+          </b-card-header>
+          <b-collapse id="accordion-5" accordion="my-accordion" role="tabpanel">
+            <b-card-body>
+              <b-form>
+                <b-form-group
+                    label="Tło"
+                >
+                  <b-form-input
+                      v-model="$store.state.data.customerReviews.backgroundImage"
                   ></b-form-input>
                 </b-form-group>
                 <b-form-group
-                    label="Alt zdjęcia"
+                    label="Nagłówek"
                 >
                   <b-form-input
-                      v-model="$store.state.data.ourKnowledge.slider.items[index].imageAlt"
+                      v-model="$store.state.data.customerReviews.h1"
                   ></b-form-input>
                 </b-form-group>
                 <b-form-group
-                    label="Tytuł"
-                >
-                  <b-form-input
-                      v-model="$store.state.data.ourKnowledge.slider.items[index].title"
-                  ></b-form-input>
-                </b-form-group>
-                <b-form-group
-                    label="Data"
-                >
-                  <b-form-input
-                      v-model="$store.state.data.ourKnowledge.slider.items[index].date"
-                  ></b-form-input>
-                </b-form-group>
-                <b-form-group
-                    label="Opis"
+                    label="Tekst"
                 >
                   <b-form-textarea
-                      v-model="$store.state.data.ourKnowledge.slider.items[index].description"
+                      v-model="$store.state.data.customerReviews.p"
                   ></b-form-textarea>
                 </b-form-group>
-              </div>
-              <b-button @click="addNewSlideItem">+</b-button>
-            </b-form>
-          </b-card-body>
-        </b-collapse>
-      </b-card>
+                <b-row>
+                  <b-col class="col-8">
+                    <b-form-group
+                        label="Przycisk google tekst:"
+                    >
+                      <b-form-input
+                          v-model="$store.state.data.customerReviews.buttons.googleButton.buttonText"
+                      ></b-form-input>
+                    </b-form-group>
+                  </b-col>
+                  <b-col class="d-flex align-items-center">
+                    <b-form-checkbox
+                        id="checkbox-4"
+                        name="checkbox-4"
+                        v-model="$store.state.data.customerReviews.buttons.googleButton.show"
+                    >
+                      Pokaż ikonę google
+                    </b-form-checkbox>
+                  </b-col>
+                </b-row>
+                <b-row>
+                  <b-col class="col-8">
+                    <b-form-group
+                        label="Przycisk facebook tekst:"
+                    >
+                      <b-form-input
+                          v-model="$store.state.data.customerReviews.buttons.facebookButton.buttonText"
+                      ></b-form-input>
+                    </b-form-group>
+                  </b-col>
+                  <b-col class="d-flex align-items-center">
+                    <b-form-checkbox
+                        id="checkbox-5"
+                        name="checkbox-5"
+                        v-model="$store.state.data.customerReviews.buttons.facebookButton.show"
+                    >
+                      Pokaż ikonę facebook
+                    </b-form-checkbox>
+                  </b-col>
+                </b-row>
+              </b-form>
+            </b-card-body>
+          </b-collapse>
+        </b-card>
 
-      <b-card no-body class="mb-1">
-        <b-card-header header-tag="header" class="p-1" role="tab">
-          <b-button block v-b-toggle.accordion-7 variant="info">best-furniture-parallax</b-button>
-        </b-card-header>
-        <b-collapse id="accordion-7" accordion="my-accordion" role="tabpanel">
-          <b-card-body>
-            <b-form>
-              <b-form-group
-                label="Tło"
-              >
-                <b-input
-                  v-model="$store.state.data.bestFurnitureParallax.backgroundImage"
+        <b-card no-body class="mb-1">
+          <b-card-header header-tag="header" class="p-1" role="tab">
+            <b-button block v-b-toggle.accordion-6 variant="info">our-knowledge</b-button>
+          </b-card-header>
+          <b-collapse id="accordion-6" accordion="my-accordion" role="tabpanel">
+            <b-card-body>
+              <b-form>
+                <b-form-group
+                    label="Nagłówek"
                 >
-                </b-input>
-              </b-form-group>
-              <b-form-group
-                  label="Nagłówek"
-              >
-                <b-input
-                    v-model="$store.state.data.bestFurnitureParallax.h1"
+                  <b-form-input
+                      v-model="$store.state.data.ourKnowledge.header.h1"
+                  >
+                  </b-form-input>
+                </b-form-group>
+                <b-form-group
+                    label="Tekst"
                 >
-                </b-input>
-              </b-form-group>
-              <b-form-group
-                  label="Przycisk"
-              >
-                <b-input
-                    v-model="$store.state.data.bestFurnitureParallax.button.buttonText"
+                  <b-form-textarea
+                      v-model="$store.state.data.ourKnowledge.header.p"
+                  >
+                  </b-form-textarea>
+                </b-form-group>
+                <b-form-group
+                    label="Przycisk"
                 >
-                </b-input>
-              </b-form-group>
-            </b-form>
-          </b-card-body>
-        </b-collapse>
-      </b-card>
-
-      <b-card no-body class="mb-1">
-        <b-card-header header-tag="header" class="p-1" role="tab">
-          <b-button block v-b-toggle.accordion-8 variant="info">footer</b-button>
-        </b-card-header>
-        <b-collapse id="accordion-8" accordion="my-accordion" role="tabpanel">
-          <b-card-body>
-            <b-form>
-              <b-form-group
-                label="Nagłówek"
-              >
-                <b-form-input
-                  v-model="$store.state.data.footer.header.h1"
-                >
-                </b-form-input>
-              </b-form-group>
-              <b-form-group
-                  label="Tekst"
-              >
-                <b-form-textarea
-                    v-model="$store.state.data.footer.header.p"
-                >
-                </b-form-textarea>
-              </b-form-group>
-              <b-row>
-                <b-col class="col-8">
+                  <b-form-input
+                      v-model="$store.state.data.ourKnowledge.header.button.buttonText"
+                  >
+                  </b-form-input>
+                </b-form-group>
+                <div class="my-5" v-for="(item, index) in $store.state.data.ourKnowledge.slider.items"
+                     :key="index">
                   <b-form-group
-                      label="Url do profilu facebook"
+                      :label="'Url zdjęcia. Slide nr ' + (index + 1)"
                   >
                     <b-form-input
-                        v-model="$store.state.data.footer.header.footerContact.facebook.url"
-                    >
-                    </b-form-input>
+                        v-model="$store.state.data.ourKnowledge.slider.items[index].imageUrl"
+                    ></b-form-input>
                   </b-form-group>
-                </b-col>
-                <b-col>
-                  <b-form-checkbox
-                      id="checkbox-6"
-                      name="checkbox-6"
-                      v-model="$store.state.data.footer.header.footerContact.facebook.show"
-                  >
-                    Pokaż kontakt facebook
-                  </b-form-checkbox>
-                </b-col>
-              </b-row>
-              <b-row>
-                <b-col class="col-8">
                   <b-form-group
-                      label="Url do profilu instagram"
+                      label="Alt zdjęcia"
                   >
                     <b-form-input
-                        v-model="$store.state.data.footer.header.footerContact.instagram.url"
-                    >
-                    </b-form-input>
+                        v-model="$store.state.data.ourKnowledge.slider.items[index].imageAlt"
+                    ></b-form-input>
                   </b-form-group>
-                </b-col>
-                <b-col>
-                  <b-form-checkbox
-                      id="checkbox-7"
-                      name="checkbox-7"
-                      v-model="$store.state.data.footer.header.footerContact.instagram.show"
-                  >
-                    Pokaż kontakt instagram
-                  </b-form-checkbox>
-                </b-col>
-              </b-row>
-              <b-row>
-                <b-col class="col-8">
                   <b-form-group
-                      label="Telefon"
+                      label="Tytuł"
+                  >
+                    <b-form-input
+                        v-model="$store.state.data.ourKnowledge.slider.items[index].title"
+                    ></b-form-input>
+                  </b-form-group>
+                  <b-form-group
+                      label="Data"
+                  >
+                    <b-form-input
+                        v-model="$store.state.data.ourKnowledge.slider.items[index].date"
+                    ></b-form-input>
+                  </b-form-group>
+                  <b-form-group
+                      label="Opis"
                   >
                     <b-form-textarea
-                        v-model="$store.state.data.footer.header.footerContact.telephone.url"
-                    >
-                    </b-form-textarea>
+                        v-model="$store.state.data.ourKnowledge.slider.items[index].description"
+                    ></b-form-textarea>
                   </b-form-group>
-                </b-col>
-                <b-col>
-                  <b-form-checkbox
-                      id="checkbox-8"
-                      name="checkbox-8"
-                      v-model="$store.state.data.footer.header.footerContact.telephone.show"
-                  >
-                    Pokaż numer telefonu
-                  </b-form-checkbox>
-                </b-col>
-              </b-row>
-              <b-row>
-                <b-col class="col-8">
-                  <b-form-group
-                      label="Tekst"
-                  >
-                    <b-form-textarea
-                        v-model="$store.state.data.footer.header.footerContact.mail.url"
-                    >
-                    </b-form-textarea>
-                  </b-form-group>
-                </b-col>
-                <b-col>
-                  <b-form-checkbox
-                      id="checkbox-9"
-                      name="checkbox-9"
-                      v-model="$store.state.data.footer.header.footerContact.mail.show"
-                  >
-                    Pokaż kontakt mailowy
-                  </b-form-checkbox>
-                </b-col>
-              </b-row>
-            </b-form>
-          </b-card-body>
-        </b-collapse>
-      </b-card>
-    </div>
+                </div>
+                <b-button @click="addNewSlideItem">+</b-button>
+              </b-form>
+            </b-card-body>
+          </b-collapse>
+        </b-card>
 
-    <b-button :to="{name:'home'}">Sprawdź</b-button>
+        <b-card no-body class="mb-1">
+          <b-card-header header-tag="header" class="p-1" role="tab">
+            <b-button block v-b-toggle.accordion-7 variant="info">best-furniture-parallax</b-button>
+          </b-card-header>
+          <b-collapse id="accordion-7" accordion="my-accordion" role="tabpanel">
+            <b-card-body>
+              <b-form>
+                <b-form-group
+                    label="Tło"
+                >
+                  <b-input
+                      v-model="$store.state.data.bestFurnitureParallax.backgroundImage"
+                  >
+                  </b-input>
+                </b-form-group>
+                <b-form-group
+                    label="Nagłówek"
+                >
+                  <b-input
+                      v-model="$store.state.data.bestFurnitureParallax.h1"
+                  >
+                  </b-input>
+                </b-form-group>
+                <b-form-group
+                    label="Przycisk"
+                >
+                  <b-input
+                      v-model="$store.state.data.bestFurnitureParallax.button.buttonText"
+                  >
+                  </b-input>
+                </b-form-group>
+              </b-form>
+            </b-card-body>
+          </b-collapse>
+        </b-card>
+
+        <b-card no-body class="mb-1">
+          <b-card-header header-tag="header" class="p-1" role="tab">
+            <b-button block v-b-toggle.accordion-8 variant="info">footer</b-button>
+          </b-card-header>
+          <b-collapse id="accordion-8" accordion="my-accordion" role="tabpanel">
+            <b-card-body>
+              <b-form>
+                <b-form-group
+                    label="Nagłówek"
+                >
+                  <b-form-input
+                      v-model="$store.state.data.footer.header.h1"
+                  >
+                  </b-form-input>
+                </b-form-group>
+                <b-form-group
+                    label="Tekst"
+                >
+                  <b-form-textarea
+                      v-model="$store.state.data.footer.header.p"
+                  >
+                  </b-form-textarea>
+                </b-form-group>
+                <b-row>
+                  <b-col class="col-8">
+                    <b-form-group
+                        label="Url do profilu facebook"
+                    >
+                      <b-form-input
+                          v-model="$store.state.data.footer.header.footerContact.facebook.url"
+                      >
+                      </b-form-input>
+                    </b-form-group>
+                  </b-col>
+                  <b-col>
+                    <b-form-checkbox
+                        id="checkbox-6"
+                        name="checkbox-6"
+                        v-model="$store.state.data.footer.header.footerContact.facebook.show"
+                    >
+                      Pokaż kontakt facebook
+                    </b-form-checkbox>
+                  </b-col>
+                </b-row>
+                <b-row>
+                  <b-col class="col-8">
+                    <b-form-group
+                        label="Url do profilu instagram"
+                    >
+                      <b-form-input
+                          v-model="$store.state.data.footer.header.footerContact.instagram.url"
+                      >
+                      </b-form-input>
+                    </b-form-group>
+                  </b-col>
+                  <b-col>
+                    <b-form-checkbox
+                        id="checkbox-7"
+                        name="checkbox-7"
+                        v-model="$store.state.data.footer.header.footerContact.instagram.show"
+                    >
+                      Pokaż kontakt instagram
+                    </b-form-checkbox>
+                  </b-col>
+                </b-row>
+                <b-row>
+                  <b-col class="col-8">
+                    <b-form-group
+                        label="Telefon"
+                    >
+                      <b-form-textarea
+                          v-model="$store.state.data.footer.header.footerContact.telephone.url"
+                      >
+                      </b-form-textarea>
+                    </b-form-group>
+                  </b-col>
+                  <b-col>
+                    <b-form-checkbox
+                        id="checkbox-8"
+                        name="checkbox-8"
+                        v-model="$store.state.data.footer.header.footerContact.telephone.show"
+                    >
+                      Pokaż numer telefonu
+                    </b-form-checkbox>
+                  </b-col>
+                </b-row>
+                <b-row>
+                  <b-col class="col-8">
+                    <b-form-group
+                        label="Tekst"
+                    >
+                      <b-form-textarea
+                          v-model="$store.state.data.footer.header.footerContact.mail.url"
+                      >
+                      </b-form-textarea>
+                    </b-form-group>
+                  </b-col>
+                  <b-col>
+                    <b-form-checkbox
+                        id="checkbox-9"
+                        name="checkbox-9"
+                        v-model="$store.state.data.footer.header.footerContact.mail.show"
+                    >
+                      Pokaż kontakt mailowy
+                    </b-form-checkbox>
+                  </b-col>
+                </b-row>
+              </b-form>
+            </b-card-body>
+          </b-collapse>
+        </b-card>
+      </div>
+      <b-button :to="{name:'home'}">Sprawdź</b-button>
+    </b-container>
   </div>
 </template>
 
@@ -568,6 +590,9 @@ export default {
             description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet'
           };
           this.$store.state.data.ourKnowledge.slider.items.push(example)
+    },
+    logout() {
+      this.$store.dispatch('logout');
     }
   }
 }
