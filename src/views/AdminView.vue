@@ -1,9 +1,14 @@
 <template>
-  <div>
+  <div id="admin-panel">
     <b-navbar toggleable="lg" type="dark" variant="info">
       <b-navbar-brand href="#">Panel Administracyjny</b-navbar-brand>
 
-      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+      <b-navbar-toggle target="nav-collapse">
+        <template #default="{ expanded }">
+          <BIconChevronBarUp v-if="expanded" />
+          <BIconChevronBarDown v-else />
+        </template>
+      </b-navbar-toggle>
 
       <b-collapse id="nav-collapse" is-nav>
 
@@ -545,8 +550,13 @@
 </template>
 
 <script>
+import { BIconChevronBarUp, BIconChevronBarDown } from 'bootstrap-vue'
 export default {
   name: "AdminView",
+  components: {
+    BIconChevronBarUp,
+    BIconChevronBarDown
+  },
   data() {
     return {
       text: `
@@ -598,10 +608,22 @@ export default {
 }
 </script>
 
-<style scoped src="bootstrap/dist/css/bootstrap.css"></style>
-<style scoped src="bootstrap-vue/dist/bootstrap-vue.css"></style>4
+
+<style scoped lang="scss">
+:deep() {
+  @import '../assets/scss/main.scss';
+}
+</style>
+
 <style scoped>
-div {
-  /*border: 1px solid black;*/
+#admin-panel {
+  margin: 0;
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  text-align: left;
+  background-color: #fff;
 }
 </style>
