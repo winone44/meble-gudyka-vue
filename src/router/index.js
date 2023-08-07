@@ -4,6 +4,7 @@ import HomeView from '../views/HomeView.vue'
 import LoginView from "@/views/LoginView";
 import AdminView from "@/views/AdminView";
 import store from "@/store";
+import AdminChangePasswordView from "@/views/AdminChangePasswordView";
 
 Vue.use(VueRouter)
 
@@ -11,10 +12,10 @@ store.dispatch('autologin');
 
 const authGuard = (to, from, next) => {
   if (store.getters.isAuth) {
-    console.log("authGuard " + store.state.isAuth)
+    console.log("authGuard " + store.getters.isAuth)
     next();
   }else {
-    console.log("authGuard " + store.state.isAuth)
+    console.log("authGuard " + store.getters.isAuth)
     next({name: 'login-to-admin-panel'})
   }
 }
@@ -45,6 +46,12 @@ const routes = [
     path: '/admin',
     name: 'admin-panel',
     component: AdminView,
+    beforeEnter: authGuard,
+  },
+  {
+    path: '/admin-change-password',
+    name: 'admin-change-password',
+    component: AdminChangePasswordView,
     beforeEnter: authGuard,
   }
 ]

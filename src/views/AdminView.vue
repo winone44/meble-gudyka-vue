@@ -1,31 +1,6 @@
 <template>
   <div id="admin-panel">
-    <b-navbar toggleable="lg" type="dark" variant="info">
-      <b-navbar-brand href="#">Panel Administracyjny</b-navbar-brand>
-
-      <b-navbar-toggle target="nav-collapse">
-        <template #default="{ expanded }">
-          <BIconChevronBarUp v-if="expanded" />
-          <BIconChevronBarDown v-else />
-        </template>
-      </b-navbar-toggle>
-
-      <b-collapse id="nav-collapse" is-nav>
-
-        <!-- Right aligned nav items -->
-        <b-navbar-nav class="ml-auto">
-
-          <b-nav-item-dropdown right>
-            <!-- Using 'button-content' slot -->
-            <template #button-content>
-              <em>{{ $store.state.username }}</em>
-            </template>
-            <b-dropdown-item href="#">Zmień hasło</b-dropdown-item>
-            <b-dropdown-item @click="logout">Wyloguj się</b-dropdown-item>
-          </b-nav-item-dropdown>
-        </b-navbar-nav>
-      </b-collapse>
-    </b-navbar>
+    <AdminNavbarComponent />
     <b-container class="mt-5">
       <div class="accordion" role="tablist">
         <b-card no-body class="mb-1">
@@ -550,12 +525,12 @@
 </template>
 
 <script>
-import { BIconChevronBarUp, BIconChevronBarDown } from 'bootstrap-vue'
+
+import AdminNavbarComponent from "@/components/AdminNavbarComponent";
 export default {
   name: "AdminView",
   components: {
-    BIconChevronBarUp,
-    BIconChevronBarDown
+    AdminNavbarComponent
   },
   data() {
     return {
@@ -600,9 +575,6 @@ export default {
             description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet'
           };
           this.$store.state.data.ourKnowledge.slider.items.push(example)
-    },
-    logout() {
-      this.$store.dispatch('logout');
     }
   }
 }

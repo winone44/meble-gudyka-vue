@@ -11,24 +11,47 @@
                   <b-form @submit.prevent="onSubmit">
                     <b-form-group
                         label="Email:"
-                        type="email"
-                        required
+                        label-for="email"
                     >
                       <b-form-input
+                          id="email"
                           v-model="email"
+                          type="email"
+                          @input="$v.email.$model = $event.trim()"
+                          :state="!$v.email.$dirty ? null : !$v.email.$error"
+                          required
                           placeholder="Wpisz swój email"
                       ></b-form-input>
+                      <b-form-invalid-feedback>
+                        <span v-if="!$v.email.required">To pole jest wymagane. </span>
+                        <span v-if="!$v.email.email">Błędny adres email. </span>
+                      </b-form-invalid-feedback>
+                      <b-form-valid-feedback>
+                        <span>Wszystko jest okej. </span>
+                      </b-form-valid-feedback>
                     </b-form-group>
                     <b-form-group
                         label="Hasło:"
+                        label-for="password"
                     >
                       <b-form-input
-                          v-model="password"
+                          if="password"
                           type="password"
+                          v-model="password"
+                          @input="$v.password.$model = $event.trim()"
+                          :state="!$v.password.$dirty ? null : !$v.password.$error"
                           required
                           placeholder="Wpisz swoje hasło"
                       ></b-form-input>
+                      <b-form-invalid-feedback>
+                        <span v-if="!$v.password.required">To pole jest wymagane. </span>
+                        <span v-if="!$v.password.minLength">Hasło musi posiadać conajmniej 8 znaków. </span>
+                      </b-form-invalid-feedback>
+                      <b-form-valid-feedback>
+                        <span>Wszystko jest okej. </span>
+                      </b-form-valid-feedback>
                     </b-form-group>
+                    <p>{{ $store.state.backendSerwerResponse }}</p>
                     <b-button type="submit" class="btn-lg btn-block mt-5" variant="primary">Zaloguj się</b-button>
                   </b-form>
                 </div>
@@ -42,6 +65,7 @@
 </template>
 
 <script>
+import { required, minLength, email } from 'vuelidate/lib/validators'
 
 export default {
   name: "LoginView",
@@ -51,9 +75,14 @@ export default {
       password: ''
     }
   },
-  computed: {
-    validation() {
-      return this.password.length > 4 && this.password.length < 13
+  validations: {
+    email: {
+      required,
+      email
+    },
+    password: {
+      required,
+      minLength: minLength(8)
     }
   },
   methods: {
@@ -62,7 +91,9 @@ export default {
          email: this.email,
          password: this.password
        })
-      await this.$router.push({name: 'admin-panel'})
+       if (this.$store.getters.isAuth) {
+         await this.$router.push({name: 'admin-panel'})
+       }
     },
   },
 }

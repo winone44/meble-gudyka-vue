@@ -29,7 +29,7 @@ async function onRequestFailure(error, store) {
       // Jeśli odświeżanie się nie powiedzie, wyloguj użytkownika
       store.dispatch('logout');
       // Przekieruj do strony logowania lub innego komponentu
-      router.push({ name: 'login' });
+      router.push({ name: 'login-to-admin-panel' });
     }
   }
   return Promise.reject(error);
@@ -240,7 +240,8 @@ const store = new Vuex.Store({
           }
         }
       }
-    }
+    },
+    backendSerwerResponse: null,
   },
   getters: {
     isAuth: state => {
@@ -282,6 +283,9 @@ const store = new Vuex.Store({
       state.username = null;
       delete apiClient.defaults.headers.common['Authorization'];
     },
+    setBackendSerwerResponse(state, payload) {
+      state.backendSerwerResponse =  payload;
+    }
   },
   actions: {
     async login({commit, dispatch}, payload) {
@@ -314,10 +318,14 @@ const store = new Vuex.Store({
         }, response.data.refresh_token_lifetime * 1000)
 
       } catch (e) {
-        commit('setResponse', {
-          response: e
-        });
-        console.log(e)
+        if (e.response && e.response.status === 400) {
+          commit('setBackendSerwerResponse', {
+            response: e.response.data.msg
+          });
+        }
+        console.log(e.response.status)
+
+
       }
     },
     async refreshTokens({ state, commit }) {
@@ -333,6 +341,7 @@ const store = new Vuex.Store({
         localStorage.setItem('accessToken', response.data.access);
       } catch (error) {
         console.error(error);
+        throw false;
       }
 
 
@@ -379,6 +388,19 @@ const store = new Vuex.Store({
       setTimeout(() => {
         dispatch('logout');
       },expirationDate.getTime() - now.getTime())
+    },
+    async changePassword({commit}, payload) {
+      try {
+        let {data} = await apiClient.post(`${API_URL}accounts/change-password`, payload)
+        console.log(data);
+        commit('setBackendSerwerResponse', data)
+      } catch (e) {
+        console.log(e.response.data)
+        if (e.response.data.current_password.current_password) {
+          commit('setBackendSerwerResponse', e.response.data.current_password.current_password)
+        }
+
+      }
     },
   },
   modules: {
