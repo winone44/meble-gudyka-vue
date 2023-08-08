@@ -48,7 +48,7 @@
 
 
               <b-form-group
-                  label="Nowe hasło"
+                  label="Powtórz nowe hasło"
                   label-for="new-password2"
               >
                 <b-form-input
