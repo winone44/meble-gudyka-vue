@@ -53,7 +53,14 @@ const routes = [
     name: 'admin-change-password',
     component: AdminChangePasswordView,
     beforeEnter: authGuard,
-  }
+  },
+  {
+    path: '/article/:title',
+    name: 'article',
+    component: () => import('@/views/ArticleView.vue'),
+    beforeEnter: authGuard,
+    props: true
+  },
 ]
 
 const router = new VueRouter({
