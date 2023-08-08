@@ -45,14 +45,13 @@
               </div>
             </div>
             <div>
-              <button class="our-knowledge-slide-button">Czytaj więcej</button>
+              <router-link :to="{name: 'article', params: {title: slugify(item.title)} }"><button class="our-knowledge-slide-button">Czytaj więcej</button></router-link>
             </div>
           </div>
 
         </div>
       </div>
     </div>
-
   </section>
 </template>
 
@@ -116,6 +115,21 @@ export default {
       if (element) {
         element.scrollIntoView({behavior: 'smooth'});
       }
+    },
+    slugify(string) {
+      const from = "ąćęłńóśźż";
+      const to = "acelnoszz";
+
+      const convertedString = string.split('').map((char) => {
+        const indexOfChar = from.indexOf(char);
+        return indexOfChar > -1 ? to[indexOfChar] : char;
+      }).join('');
+
+      return convertedString
+          .toLowerCase()
+          .replace(/[^a-z0-9 ]/g, '')
+          .trim()
+          .replace(/\s+/g, '-');
     }
   }
 }
