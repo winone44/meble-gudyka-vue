@@ -41,205 +41,216 @@ const store = new Vuex.Store({
     refreshToken: null,
     userId: null,
     username: null,
+    // data: {
+    //   firstSection: {
+    //     backgroundImage: '/assets/img/fotka.png',
+    //     mainHeader: {
+    //       h2: 'Najlepsze Kuchnie we Wrocławiu',
+    //       p: 'Twoja wycena zostanie przetworzona w ciągu 48 godzin od momentu złożenia zapytania.',
+    //       button: {
+    //         buttonText: 'Kontakt'
+    //       }
+    //     },
+    //     contactIcons: {
+    //       telephone: {
+    //         telNumber: '123456789',
+    //         show: true,
+    //       },
+    //       facebook: {
+    //         fbUrl: 'https://fb.com',
+    //         show: true,
+    //       },
+    //       envelope: {
+    //         mail: 'example@mail.com',
+    //         show: true,
+    //       }
+    //     }
+    //   },
+    //   otherProjects: {
+    //     header: {
+    //       h2: 'A co poza kuchniami?'
+    //     },
+    //     gallery: [
+    //       {
+    //         galleryImage: {
+    //           imageUrl: 'assets/img/foto1.png',
+    //           imageAlt: 'Obraz przedstawiający pięknie wykończoną kuchnię z drewna'
+    //         },
+    //         galleryTitle: {
+    //           p: 'Kuchnie'
+    //         }
+    //       },
+    //       {
+    //         galleryImage: {
+    //           imageUrl: 'assets/img/foto2.png',
+    //           imageAlt: 'Zdjęcie eleganckich drewnianych szaf wykonanych przez naszą firmę'
+    //         },
+    //         galleryTitle: {
+    //           p: 'Szafy'
+    //         }
+    //       },
+    //       {
+    //         galleryImage: {
+    //           imageUrl: 'assets/img/foto3.png',
+    //           imageAlt: 'Ilustracja nowoczesnych garderób z drewna dostępnych w naszej ofercie'
+    //         },
+    //         galleryTitle: {
+    //           p: 'Garderoby'
+    //         }
+    //       },
+    //       {
+    //         galleryImage: {
+    //           imageUrl: 'assets/img/foto4.png',
+    //           imageAlt: 'Obraz pokazujący nasze wykonane na zamówienie drewniane biura'
+    //         },
+    //         galleryTitle: {
+    //           p: 'Biura'
+    //         }
+    //       }
+    //     ]
+    //   },
+    //   parallax: {
+    //     backgroundImage: '/assets/img/kuchniegudykawroclaw.png',
+    //     logoUrl: 'assets/img/logo.png',
+    //     button: {
+    //       buttonText: 'Kontakt'
+    //     }
+    //   },
+    //   howWeWork: {
+    //     header: {
+    //       h1: 'Jak pracujemy?',
+    //     },
+    //     folders: [
+    //       {
+    //         h2: 'Darmowa wycena w 48H',
+    //         p: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet'
+    //       },
+    //       {
+    //         h2: 'Produkcja Twojej Kuchni',
+    //         p: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet'
+    //       },
+    //       {
+    //         h2: 'Montaż Twojej kuchni',
+    //         p: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet'
+    //       }
+    //     ],
+    //     button: {
+    //       buttonText: 'ZOBACZ NASZE REALIZACJE'
+    //     }
+    //   },
+    //   aboutUs: {
+    //     imageUrl: 'assets/img/DSC04159.png',
+    //     imageAlt: '',
+    //     h3: 'Jesteśmy super',
+    //     p: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam e',
+    //     buttonText: 'O nas'
+    //   },
+    //   customerReviews: {
+    //     backgroundImage: '/assets/img/3.png',
+    //     h1: 'Mamy bardzo dobre opinie',
+    //     p: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor',
+    //     buttons: {
+    //       googleButton: {
+    //         buttonText: 'NASZE OPINIE W GOOGLE',
+    //         show: true
+    //       },
+    //       facebookButton: {
+    //         buttonText: 'NASZE OPINIE W FACEBOOKU',
+    //         show: true
+    //       }
+    //     },
+    //     logoUrl: 'assets/img/logo.png',
+    //   },
+    //   ourKnowledge: {
+    //     header: {
+    //       h1: 'Nasza wiedza',
+    //       p: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing',
+    //       button: {
+    //         buttonText: 'Kontakt'
+    //       }
+    //     },
+    //     slider: {
+    //       items: [
+    //         {
+    //           imageUrl: 'assets/img/fotoSlider.png',
+    //           imageAlt: 'Oświetlona ulica most samochód kościół',
+    //           title: 'Tytuł wpisu',
+    //           date: '15.04.2021',
+    //           description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet'
+    //         },
+    //         {
+    //           imageUrl: 'assets/img/fotoSlider.png',
+    //           imageAlt: 'Oświetlona ulica most samochód kościół',
+    //           title: 'Tytuł wpisu',
+    //           date: '15.04.2021',
+    //           description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet'
+    //         },
+    //         {
+    //           imageUrl: 'assets/img/fotoSlider.png',
+    //           imageAlt: 'Oświetlona ulica most samochód kościół',
+    //           title: 'Tytuł wpisu',
+    //           date: '15.04.2021',
+    //           description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet'
+    //         },
+    //         {
+    //           imageUrl: 'assets/img/fotoSlider.png',
+    //           imageAlt: 'Oświetlona ulica most samochód kościół',
+    //           title: 'Tytuł wpisu',
+    //           date: '15.04.2021',
+    //           description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet'
+    //         },
+    //         {
+    //           imageUrl: 'assets/img/fotoSlider.png',
+    //           imageAlt: 'Oświetlona ulica most samochód kościół',
+    //           title: 'Tytuł wpisu',
+    //           date: '15.04.2021',
+    //           description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet'
+    //         },
+    //       ],
+    //     }
+    //   },
+    //   bestFurnitureParallax: {
+    //     backgroundImage: '/assets/img/kuchnia2.png',
+    //     h1: 'Najlepsze meble',
+    //     button: {
+    //       buttonText: 'NASZE REALIZACJE'
+    //     }
+    //   },
+    //   footer: {
+    //     header: {
+    //       h1: 'Napisz do nas!',
+    //       p: ' Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et',
+    //       footerContact: {
+    //         facebook: {
+    //           url: '#',
+    //           show: true
+    //         },
+    //         instagram: {
+    //           url: '#',
+    //           show: true
+    //         },
+    //         telephone: {
+    //           url: '+48123456789',
+    //           show: true
+    //         },
+    //         mail: {
+    //           url: 'kontakt@stolzdrewna.pl',
+    //           show: true
+    //         }
+    //       }
+    //     }
+    //   }
+    // },
     data: {
-      firstSection: {
-        backgroundImage: '/assets/img/fotka.png',
-        mainHeader: {
-          h2: 'Najlepsze Kuchnie we Wrocławiu',
-          p: 'Twoja wycena zostanie przetworzona w ciągu 48 godzin od momentu złożenia zapytania.',
-          button: {
-            buttonText: 'Kontakt'
-          }
-        },
-        contactIcons: {
-          telephone: {
-            telNumber: '123456789',
-            show: true,
-          },
-          facebook: {
-            fbUrl: 'https://fb.com',
-            show: true,
-          },
-          envelope: {
-            mail: 'example@mail.com',
-            show: true,
-          }
-        }
-      },
-      otherProjects: {
-        header: {
-          h2: 'A co poza kuchniami?'
-        },
-        gallery: [
-          {
-            galleryImage: {
-              imageUrl: 'assets/img/foto1.png',
-              imageAlt: 'Obraz przedstawiający pięknie wykończoną kuchnię z drewna'
-            },
-            galleryTitle: {
-              p: 'Kuchnie'
-            }
-          },
-          {
-            galleryImage: {
-              imageUrl: 'assets/img/foto2.png',
-              imageAlt: 'Zdjęcie eleganckich drewnianych szaf wykonanych przez naszą firmę'
-            },
-            galleryTitle: {
-              p: 'Szafy'
-            }
-          },
-          {
-            galleryImage: {
-              imageUrl: 'assets/img/foto3.png',
-              imageAlt: 'Ilustracja nowoczesnych garderób z drewna dostępnych w naszej ofercie'
-            },
-            galleryTitle: {
-              p: 'Garderoby'
-            }
-          },
-          {
-            galleryImage: {
-              imageUrl: 'assets/img/foto4.png',
-              imageAlt: 'Obraz pokazujący nasze wykonane na zamówienie drewniane biura'
-            },
-            galleryTitle: {
-              p: 'Biura'
-            }
-          }
-        ]
-      },
-      parallax: {
-        backgroundImage: '/assets/img/kuchniegudykawroclaw.png',
-        logoUrl: 'assets/img/logo.png',
-        button: {
-          buttonText: 'Kontakt'
-        }
-      },
-      howWeWork: {
-        header: {
-          h1: 'Jak pracujemy?',
-        },
-        folders: [
-          {
-            h2: 'Darmowa wycena w 48H',
-            p: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet'
-          },
-          {
-            h2: 'Produkcja Twojej Kuchni',
-            p: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet'
-          },
-          {
-            h2: 'Montaż Twojej kuchni',
-            p: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet'
-          }
-        ],
-        button: {
-          buttonText: 'ZOBACZ NASZE REALIZACJE'
-        }
-      },
-      aboutUs: {
-        imageUrl: 'assets/img/DSC04159.png',
-        imageAlt: '',
-        h3: 'Jesteśmy super',
-        p: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam e',
-        buttonText: 'O nas'
-      },
-      customerReviews: {
-        backgroundImage: '/assets/img/3.png',
-        h1: 'Mamy bardzo dobre opinie',
-        p: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor',
-        buttons: {
-          googleButton: {
-            buttonText: 'NASZE OPINIE W GOOGLE',
-            show: true
-          },
-          facebookButton: {
-            buttonText: 'NASZE OPINIE W FACEBOOKU',
-            show: true
-          }
-        },
-        logoUrl: 'assets/img/logo.png',
-      },
-      ourKnowledge: {
-        header: {
-          h1: 'Nasza wiedza',
-          p: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing',
-          button: {
-            buttonText: 'Kontakt'
-          }
-        },
-        slider: {
-          items: [
-            {
-              imageUrl: 'assets/img/fotoSlider.png',
-              imageAlt: 'Oświetlona ulica most samochód kościół',
-              title: 'Tytuł wpisu',
-              date: '15.04.2021',
-              description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet'
-            },
-            {
-              imageUrl: 'assets/img/fotoSlider.png',
-              imageAlt: 'Oświetlona ulica most samochód kościół',
-              title: 'Tytuł wpisu',
-              date: '15.04.2021',
-              description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet'
-            },
-            {
-              imageUrl: 'assets/img/fotoSlider.png',
-              imageAlt: 'Oświetlona ulica most samochód kościół',
-              title: 'Tytuł wpisu',
-              date: '15.04.2021',
-              description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet'
-            },
-            {
-              imageUrl: 'assets/img/fotoSlider.png',
-              imageAlt: 'Oświetlona ulica most samochód kościół',
-              title: 'Tytuł wpisu',
-              date: '15.04.2021',
-              description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet'
-            },
-            {
-              imageUrl: 'assets/img/fotoSlider.png',
-              imageAlt: 'Oświetlona ulica most samochód kościół',
-              title: 'Tytuł wpisu',
-              date: '15.04.2021',
-              description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet'
-            },
-          ],
-        }
-      },
-      bestFurnitureParallax: {
-        backgroundImage: '/assets/img/kuchnia2.png',
-        h1: 'Najlepsze meble',
-        button: {
-          buttonText: 'NASZE REALIZACJE'
-        }
-      },
-      footer: {
-        header: {
-          h1: 'Napisz do nas!',
-          p: ' Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et',
-          footerContact: {
-            facebook: {
-              url: '#',
-              show: true
-            },
-            instagram: {
-              url: '#',
-              show: true
-            },
-            telephone: {
-              url: '+48123456789',
-              show: true
-            },
-            mail: {
-              url: 'kontakt@stolzdrewna.pl',
-              show: true
-            }
-          }
-        }
-      }
+      firstSection: null,
+      otherProjects: null,
+      parallax: null,
+      howWeWork: null,
+      aboutUs: null,
+      customerReviews: null,
+      ourKnowledge: null,
+      bestFurnitureParallax: null,
+      footer: null,
     },
     backendSerwerResponse: null,
   },
@@ -285,6 +296,17 @@ const store = new Vuex.Store({
     },
     setBackendSerwerResponse(state, payload) {
       state.backendSerwerResponse =  payload;
+    },
+    setData(state, payload) {
+      state.data.firstSection = payload.first_section;
+      state.data.otherProjects = payload.other_projects;
+      state.data.parallax = payload.parallax;
+      state.data.howWeWork = payload.how_we_work;
+      state.data.aboutUs = payload.about_us;
+      state.data.customerReviews = payload.customer_reviews;
+      state.data.ourKnowledge = payload.our_knowledge;
+      state.data.bestFurnitureParallax = payload.best_furniture_parallax;
+      state.data.footer = payload.footer;
     }
   },
   actions: {
@@ -392,14 +414,47 @@ const store = new Vuex.Store({
     async changePassword({commit}, payload) {
       try {
         let {data} = await apiClient.post(`${API_URL}accounts/change-password`, payload)
-        console.log(data);
-        commit('setBackendSerwerResponse', data)
+        console.log(data.msg);
+        commit('setBackendSerwerResponse', data.msg)
       } catch (e) {
         console.log(e.response.data)
         if (e.response.data.current_password.current_password) {
           commit('setBackendSerwerResponse', e.response.data.current_password.current_password)
         }
 
+      }
+    },
+    async saveData({state}) {
+      const payload = {
+        'first_section': JSON.stringify(state.data.firstSection),
+        'other_projects': JSON.stringify(state.data.otherProjects),
+        'parallax': JSON.stringify(state.data.parallax),
+        'how_we_work': JSON.stringify(state.data.howWeWork),
+        'about_us': JSON.stringify(state.data.aboutUs),
+        'customer_reviews': JSON.stringify(state.data.customerReviews),
+        'our_knowledge': JSON.stringify(state.data.ourKnowledge),
+        'best_furniture_parallax': JSON.stringify(state.data.bestFurnitureParallax),
+        'footer': JSON.stringify(state.data.footer),
+      }
+      try {
+        let {data} = await apiClient.put(`${API_URL}main-page-data/`, qs.stringify(payload))
+        console.log(state.data);
+        console.log(data);
+      } catch (e) {
+        console.log(payload);
+        console.log(e)
+      }
+    },
+    async getData({commit, state}) {
+      if (state.userId == null) {
+        return;
+      }
+      try {
+        let {data} = await apiClient.get(`${API_URL}main-page-data/`);
+        console.log(data)
+        commit('setData', data)
+      } catch(e) {
+        console.log(e)
       }
     },
   },

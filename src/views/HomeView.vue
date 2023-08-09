@@ -1,16 +1,26 @@
 <template>
   <div class="home">
-    <NavbarComponent />
-    <BackButtonComponent v-if="$store.getters.isAuth" />
-    <FirstSection/>
-    <OtherProjectsSection />
-    <ParallaxSection />
-    <HowWeWorkSection />
-    <AboutUsSection />
-    <CustomerReviewsSection />
-    <OurKnowledgeSection />
-    <BestFurnitureParallaxSection />
-    <FooterSection />
+    <transition name="fade" mode="out-in">
+      <div v-if="isLoading">
+        <h4>Wczytywanie</h4>
+        <div class="text-center">
+          <b-spinner variant="primary"/>
+        </div>
+      </div>
+      <div v-else>
+        <NavbarComponent/>
+        <BackButtonComponent v-if="$store.getters.isAuth"/>
+        <FirstSection/>
+        <OtherProjectsSection/>
+        <ParallaxSection/>
+        <HowWeWorkSection/>
+        <AboutUsSection/>
+        <CustomerReviewsSection/>
+        <OurKnowledgeSection/>
+        <BestFurnitureParallaxSection/>
+        <FooterSection/>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -43,7 +53,16 @@ export default {
     OtherProjectsSection,
     FirstSection,
     NavbarComponent
-  }
+  },
+  data() {
+    return {
+      isLoading: true
+    }
+  },
+  async created(){
+    await this.$store.dispatch('getData');
+    this.isLoading = false;
+  },
 }
 </script>
 
